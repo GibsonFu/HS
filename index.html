@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>旭勝國際有限公司 | HsuSheng International</title>
+  <title>?剖??????砍 | HsuSheng International</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -31,7 +31,7 @@
       overflow-x: hidden;
     }
 
-    /* ── SCROLL REVEAL ── */
+    /* ?? SCROLL REVEAL ?? */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -57,7 +57,7 @@
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
 
-    /* ── NAVBAR ── */
+    /* ?? NAVBAR ?? */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 1000;
       background: #f5efe8;
@@ -112,7 +112,7 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
 
-    /* ── HERO ── */
+    /* ?? HERO ?? */
     #hero {
       min-height: 100vh;
       background: linear-gradient(180deg, var(--blue-deep) 0%, var(--blue-mid) 60%, #0d2f5a 100%);
@@ -258,7 +258,7 @@
     }
     @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(8px)} }
 
-    /* ── SECTION COMMON ── */
+    /* ?? SECTION COMMON ?? */
     section { padding: 90px 5%; }
     .section-label {
       display: inline-block; color: var(--red); font-size: 0.78rem;
@@ -279,7 +279,7 @@
       margin-bottom: 24px; border-radius: 2px;
     }
 
-    /* ── ABOUT ── */
+    /* ?? ABOUT ?? */
     #about { background: #f0f5ff; }
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 70px;
@@ -328,7 +328,7 @@
     .feature-item h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; color: var(--gray-dark); }
     .feature-item p { font-size: 0.84rem; color: var(--gray-mid); }
 
-    /* ── SERVICES ── */
+    /* ?? SERVICES ?? */
     #services {
       background: linear-gradient(180deg, #e8f0ff 0%, #f4f7ff 100%);
     }
@@ -372,10 +372,10 @@
       padding-left: 16px; position: relative;
     }
     .service-card ul li::before {
-      content: '›'; position: absolute; left: 0; color: var(--blue-bright); font-weight: 700;
+      content: '??; position: absolute; left: 0; color: var(--blue-bright); font-weight: 700;
     }
 
-    /* ── WHY US ── */
+    /* ?? WHY US ?? */
     #why {
       background: linear-gradient(145deg, var(--blue-deep) 0%, var(--blue-mid) 50%, #0d3060 100%);
       color: #fff; position: relative; overflow: hidden;
@@ -411,7 +411,7 @@
     .why-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: rgba(255,255,255,0.9); }
     .why-card p { font-size: 0.83rem; color: rgba(180,210,255,0.6); line-height: 1.8; }
 
-    /* ── CONTACT ── */
+    /* ?? CONTACT ?? */
     #contact { background: #f0f5ff; }
     .contact-wrap {
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
@@ -456,7 +456,7 @@
     }
     .map-link:hover { color: var(--red); }
 
-    /* ── FOOTER ── */
+    /* ?? FOOTER ?? */
     footer {
       background: linear-gradient(180deg, var(--blue-deep) 0%, #060e1e 100%);
       color: rgba(255,255,255,0.6);
@@ -488,7 +488,7 @@
       display: block; font-size: 0.72rem; color: rgba(255,255,255,0.4); font-weight: 400; margin-top: 2px;
     }
 
-    /* ── MOBILE ── */
+    /* ?? MOBILE ?? */
     .mobile-menu {
       display: none; position: fixed; top: 70px; left: 0; right: 0;
       background: rgba(8,20,45,0.97); backdrop-filter: blur(16px);
@@ -500,17 +500,141 @@
     .mobile-menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 10px 0; border-bottom: 1px solid rgba(37,99,168,0.15); }
     .mobile-menu .lang-switcher { padding-top: 8px; }
 
+    /* ── RWD: 大平板 ── */
+    @media (max-width: 1100px) {
+      .about-grid  { gap: 40px; }
+      .why-grid    { gap: 16px; }
+      .footer-grid { gap: 30px; }
+    }
+
+    /* ── RWD: 平板橫式 / 小筆電 ── */
     @media (max-width: 900px) {
+      /* Navbar */
       .nav-links, .lang-switcher { display: none; }
       .hamburger { display: flex; }
-      .about-grid, .contact-wrap { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .why-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
+
+      /* Sections spacing */
+      section { padding: 64px 5%; }
+
+      /* About */
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .about-img-wrap::before { display: none; }
+      .about-visual { padding: 36px 24px; }
+      .about-stats  { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .stat-num     { font-size: 1.4rem; }
+
+      /* Philosophy */
+      #philosophy > div > div:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+
+      /* Why */
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .why-card { padding: 28px 16px; }
+      .why-num  { font-size: 2.2rem; }
+
+      /* Contact */
+      .contact-wrap { grid-template-columns: 1fr; gap: 36px; }
+      .map-wrap     { min-height: 300px; }
+      .map-wrap iframe { min-height: 300px; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     }
-    @media (max-width: 580px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr 1fr; }
+
+    /* ── RWD: 平板直式 ── */
+    @media (max-width: 680px) {
+      /* Hero */
+      .hero-title  { font-size: 2rem; }
+      .hero-sub    { font-size: 0.92rem; }
+      .btn-primary, .btn-outline { padding: 12px 24px; font-size: 0.9rem; }
+      .hero-cta    { gap: 10px; }
+
+      /* About stats: 2+2 */
+      .about-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-card  { padding: 28px 22px; }
+
+      /* Why */
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+      /* Section titles */
+      .section-title { font-size: 1.5rem; }
+    }
+
+    /* ── RWD: 手機 ── */
+    @media (max-width: 480px) {
+      nav { padding: 0 4%; height: 62px; }
+      .nav-logo img { height: 34px; }
+      .nav-logo-text { font-size: 0.8rem; }
+      .mobile-menu  { top: 62px; padding: 16px 4%; }
+
+      section { padding: 52px 4%; }
+
+      /* Hero */
+      #hero { padding: 90px 4% 50px; }
+      .hero-badge { font-size: 0.72rem; padding: 5px 14px; }
+      .hero-title { font-size: 1.75rem; }
+      .hero-sub   { font-size: 0.88rem; margin-bottom: 30px; }
+      .btn-primary, .btn-outline { padding: 11px 20px; font-size: 0.86rem; width: 100%; text-align: center; }
+      .hero-cta   { flex-direction: column; width: 100%; max-width: 280px; }
+
+      /* About */
+      .about-visual { padding: 28px 18px; }
+      .about-visual .big-logo { font-size: 3rem; }
+      .about-visual h3 { font-size: 1.1rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-num { font-size: 1.3rem; }
+      .feature-item { gap: 10px; }
+      .feature-icon { width: 36px; height: 36px; font-size: 1rem; }
+
+      /* Philosophy cards stack */
+      #philosophy > div > div:last-child {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Services */
+      .service-card { padding: 24px 18px; }
+      .service-icon { width: 52px; height: 52px; font-size: 1.5rem; }
+
+      /* Why */
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .why-card { padding: 22px 12px; }
+      .why-num  { font-size: 1.9rem; }
+      .why-card h4 { font-size: 0.85rem; }
+      .why-card p  { font-size: 0.78rem; }
+
+      /* Contact */
+      .info-row { gap: 10px; }
+      .info-icon { width: 36px; height: 36px; font-size: 0.95rem; }
+      .map-wrap { min-height: 260px; }
+      .map-wrap iframe { min-height: 260px; }
+      .map-addr-bar { font-size: 0.8rem; flex-direction: column; align-items: flex-start; gap: 6px; }
+      .map-link { margin-left: 0; }
+
+      /* Footer */
+      .footer-grid { gap: 22px; }
+      .footer-bottom { font-size: 0.73rem; }
+
+      /* Section headings */
+      .section-title { font-size: 1.35rem; }
+      .section-label { font-size: 0.72rem; }
+    }
+
+    /* ── RWD: 超小手機 ── */
+    @media (max-width: 360px) {
+      .hero-title { font-size: 1.55rem; }
+      .why-grid   { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -522,19 +646,19 @@
     <img src="logo.png" alt="HsuSheng Logo" onerror="this.style.display='none'" />
     <div class="nav-logo-text">
       <span data-i18n="nav_company_en">HsuSheng International</span>
-      <span data-i18n="nav_company_zh">旭勝國際有限公司</span>
+      <span data-i18n="nav_company_zh">?剖??????砍</span>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#about" data-i18n="nav_about">關於我們</a></li>
-    <li><a href="#services" data-i18n="nav_services">服務項目</a></li>
-    <li><a href="#why" data-i18n="nav_why">為何選擇我們</a></li>
-    <li><a href="#contact" data-i18n="nav_contact">聯絡我們</a></li>
+    <li><a href="#about" data-i18n="nav_about">???/a></li>
+    <li><a href="#services" data-i18n="nav_services">???</a></li>
+    <li><a href="#why" data-i18n="nav_why">?箔??豢???/a></li>
+    <li><a href="#contact" data-i18n="nav_contact">?舐窗??/a></li>
   </ul>
   <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn active" onclick="setLang('zh')">銝剜?</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+    <button class="lang-btn" onclick="setLang('ja')">?交隤?/button>
   </div>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -542,14 +666,14 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()" data-i18n="nav_about">關於我們</a>
-  <a href="#services" onclick="closeMenu()" data-i18n="nav_services">服務項目</a>
-  <a href="#why" onclick="closeMenu()" data-i18n="nav_why">為何選擇我們</a>
-  <a href="#contact" onclick="closeMenu()" data-i18n="nav_contact">聯絡我們</a>
+  <a href="#about" onclick="closeMenu()" data-i18n="nav_about">???/a>
+  <a href="#services" onclick="closeMenu()" data-i18n="nav_services">???</a>
+  <a href="#why" onclick="closeMenu()" data-i18n="nav_why">?箔??豢???/a>
+  <a href="#contact" onclick="closeMenu()" data-i18n="nav_contact">?舐窗??/a>
   <div class="lang-switcher" style="padding-top:8px">
-    <button class="lang-btn active" onclick="setLang('zh');closeMenu()">中文</button>
+    <button class="lang-btn active" onclick="setLang('zh');closeMenu()">銝剜?</button>
     <button class="lang-btn" onclick="setLang('en');closeMenu()">EN</button>
-    <button class="lang-btn" onclick="setLang('ja');closeMenu()">日本語</button>
+    <button class="lang-btn" onclick="setLang('ja');closeMenu()">?交隤?/button>
   </div>
 </div>
 
@@ -758,7 +882,7 @@
           <rect x="2180" y="170" width="80"  height="330"/>
           <rect x="2270" y="35"  width="130" height="465"/>
         </g>
-        <!-- Foreground windows — more prominent -->
+        <!-- Foreground windows ??more prominent -->
         <g fill="rgba(160,210,255,0.35)">
           <rect x="185" y="75"  width="12" height="10"/><rect x="203" y="75"  width="12" height="10"/>
           <rect x="221" y="75"  width="12" height="10"/><rect x="239" y="75"  width="12" height="10"/>
@@ -827,15 +951,15 @@
   <div class="hero-horizon"></div>
 
   <div class="hero-content">
-    <div class="hero-badge" data-i18n="hero_badge">醫藥行銷專業夥伴</div>
+    <div class="hero-badge" data-i18n="hero_badge">?怨銵撠平憭乩撈</div>
     <h1 class="hero-title">
-      <span data-i18n="hero_title">旭勝國際</span><br>
-      <span class="highlight" data-i18n="hero_title2">專業醫藥行銷服務</span>
+      <span data-i18n="hero_title">?剖???</span><br>
+      <span class="highlight" data-i18n="hero_title2">撠平?怨銵??</span>
     </h1>
-    <p class="hero-sub" data-i18n="hero_sub">深耕健保藥品・醫療器材・醫療行銷領域，為您的醫療事業提供全方位專業解決方案</p>
+    <p class="hero-sub" data-i18n="hero_sub">瘛梯靽??怎??冽??駁???琿????箸???璆剜?靘?嫣?撠平閫?捱?寞?</p>
     <div class="hero-cta">
-      <a href="#services" class="btn-primary" data-i18n="hero_cta1">了解服務項目</a>
-      <a href="#contact" class="btn-outline" data-i18n="hero_cta2">立即聯繫</a>
+      <a href="#services" class="btn-primary" data-i18n="hero_cta1">鈭圾???</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero_cta2">蝡?舐鼠</a>
     </div>
   </div>
   <div class="scroll-hint">
@@ -849,56 +973,56 @@
   <div class="about-grid">
     <div class="about-img-wrap reveal-left">
       <div class="about-visual">
-        <div class="big-logo">⚕</div>
-        <h3 data-i18n="about_visual_title">旭勝國際有限公司</h3>
+        <div class="big-logo">??/div>
+        <h3 data-i18n="about_visual_title">?剖??????砍</h3>
         <p data-i18n="about_visual_sub">HsuSheng International Co., Ltd.</p>
         <div class="about-stats">
           <div class="stat-box">
             <div class="stat-num" data-i18n="stat1_num">20+</div>
-            <div class="stat-lbl" data-i18n="stat1_lbl">年專業經驗</div>
+            <div class="stat-lbl" data-i18n="stat1_lbl">撟游?璆剔?撽?/div>
           </div>
           <div class="stat-box">
             <div class="stat-num" data-i18n="stat2_num">100+</div>
-            <div class="stat-lbl" data-i18n="stat2_lbl">合作廠商</div>
+            <div class="stat-lbl" data-i18n="stat2_lbl">??撱?</div>
           </div>
           <div class="stat-box">
             <div class="stat-num" data-i18n="stat3_num">500+</div>
-            <div class="stat-lbl" data-i18n="stat3_lbl">服務客戶</div>
+            <div class="stat-lbl" data-i18n="stat3_lbl">??摰Ｘ</div>
           </div>
           <div class="stat-box">
-            <div class="stat-num" data-i18n="stat4_num">全台</div>
-            <div class="stat-lbl" data-i18n="stat4_lbl">服務網絡</div>
+            <div class="stat-num" data-i18n="stat4_num">?典</div>
+            <div class="stat-lbl" data-i18n="stat4_lbl">??蝬脩窗</div>
           </div>
         </div>
       </div>
     </div>
     <div class="about-text reveal-right">
-      <div class="section-label" data-i18n="about_label">關於我們</div>
-      <h2 class="section-title" data-i18n="about_title">專注醫藥行銷<br>創造醫療價值</h2>
+      <div class="section-label" data-i18n="about_label">???/div>
+      <h2 class="section-title" data-i18n="about_title">撠釣?怨銵<br>?菟???/h2>
       <div class="divider"></div>
-      <p data-i18n="about_desc1">旭勝國際有限公司成立以來，致力於提供最專業的醫藥行銷服務，以健保藥品推廣、醫療器材代理及醫療通路開發為核心業務，深耕台灣醫療市場。</p>
+      <p data-i18n="about_desc1">?剖??????砍??隞乩?嚗????撠平??亥??瑟???隞亙靽?撱???誨???怎??楝??箸敹平??瘛梯?????氬?/p>
       <br>
-      <p data-i18n="about_desc2">我們擁有豐富的醫療產業資源，與各大醫療機構、診所及藥局建立長期穩定的合作關係，協助國內外醫療廠商進入台灣市場，提供從市場分析到通路推廣的一站式服務。</p>
+      <p data-i18n="about_desc2">????撖??怎??Ｘ平鞈?嚗??之?怎?璈??那??撅撱箇??瑟?蝛拙???雿?靽???憭???脣?啁撣嚗?靘?撣???圈楝?典誨??蝡?????/p>
       <div class="features">
         <div class="feature-item">
-          <div class="feature-icon">🏥</div>
+          <div class="feature-icon">?</div>
           <div>
-            <h4 data-i18n="feat1_title">健保藥品行銷</h4>
-            <p data-i18n="feat1_desc">專業的健保藥品推廣與市場開發，協助建立醫療通路</p>
+            <h4 data-i18n="feat1_title">?乩??亙?銵</h4>
+            <p data-i18n="feat1_desc">撠平?靽?撱??撣?嚗??拙遣蝡?楝</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🔬</div>
+          <div class="feature-icon">?</div>
           <div>
-            <h4 data-i18n="feat2_title">醫療器材代理</h4>
-            <p data-i18n="feat2_desc">嚴選優質醫療器材，提供完整的產品代理與銷售服務</p>
+            <h4 data-i18n="feat2_title">?怎??冽?隞??</h4>
+            <p data-i18n="feat2_desc">?湧?芾釭?怎??冽?嚗?靘??渡??Ｗ?隞????格???/p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">📊</div>
+          <div class="feature-icon">??</div>
           <div>
-            <h4 data-i18n="feat3_title">市場通路開發</h4>
-            <p data-i18n="feat3_desc">整合全台醫療院所資源，快速建立產品銷售網絡</p>
+            <h4 data-i18n="feat3_title">撣?楝?</h4>
+            <p data-i18n="feat3_desc">?游??典?怎??Ｘ?鞈?嚗翰?遣蝡??桃雯蝯?/p>
           </div>
         </div>
       </div>
@@ -911,33 +1035,33 @@
   <div style="position:absolute;inset:0;background:url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234080c0' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/svg%3E\");pointer-events:none;"></div>
   <div style="max-width:1000px; margin:0 auto; position:relative; z-index:1;">
     <div class="reveal" style="text-align:center; margin-bottom:48px;">
-      <div class="section-label" style="color:rgba(150,200,255,0.85);" data-i18n="phil_label">我們的理念</div>
-      <h2 class="section-title" style="color:#fff;" data-i18n="phil_title">以醫療價值為核心，以患者利益為依歸</h2>
+      <div class="section-label" style="color:rgba(150,200,255,0.85);" data-i18n="phil_label">???艙</div>
+      <h2 class="section-title" style="color:#fff;" data-i18n="phil_title">隞仿??潛?詨?嚗誑???靘飛</h2>
       <div class="divider" style="margin:16px auto 0;"></div>
     </div>
     <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
       <div style="display:flex; flex-direction:column; gap:24px;">
         <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(100,160,255,0.18); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
-          <div style="font-size:1.8rem; margin-bottom:12px;">🎯</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v1_title">嚴選優質產品</h4>
-          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v1_desc">我們深信，唯有真正優質的產品才能創造醫療價值。在引進每一項藥品或醫療器材之前，旭勝國際均進行嚴格的品質評估與臨床效益審核，確保所代理的產品具備充分的科學實證，能切實提升醫療品質。</p>
+          <div style="font-size:1.8rem; margin-bottom:12px;">?</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v1_title">?湧?芾釭?Ｗ?</h4>
+          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v1_desc">?楛靽∴??舀??迤?芾釭????賢???潦撘脫?銝????怎??冽?銋?嚗?????脰??湔??鞈芾?隡啗??典???撖拇嚗Ⅱ靽?隞????????蝘飛撖西?嚗?祕???怎??釭??/p>
         </div>
         <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(100,160,255,0.18); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
-          <div style="font-size:1.8rem; margin-bottom:12px;">💡</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v2_title">符合經濟效益</h4>
-          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v2_desc">在醫療資源有限的現實環境下，我們積極尋找療效卓越且具備成本效益的解決方案，協助醫療端在合理的預算範圍內，為患者提供最高水準的醫療照護，讓每一分醫療資源都能發揮最大效益。</p>
+          <div style="font-size:1.8rem; margin-bottom:12px;">?</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v2_title">蝚血?蝬???</h4>
+          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v2_desc">?券??皞????曉祕?啣?銝???璆萄??曄???頞??瑕?????圾瘙箸獢???怎?蝡臬????蝞??嚗???靘?擃偌皞??怎??扯風嚗?瘥????皞?賜?格?憭扳???/p>
         </div>
       </div>
       <div style="display:flex; flex-direction:column; gap:24px;">
         <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(100,160,255,0.18); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
-          <div style="font-size:1.8rem; margin-bottom:12px;">🤝</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v3_title">以醫療端為夥伴</h4>
-          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v3_desc">旭勝國際不只是一家行銷公司，更是醫療端最信賴的長期夥伴。我們主動了解醫師、護理師與藥師的實際需求，提供完整的產品知識支援與使用培訓，讓醫療專業人員能夠以最充分的信心使用我們所引進的產品。</p>
+          <div style="font-size:1.8rem; margin-bottom:12px;">??</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v3_title">隞仿?垢?箏丰隡?/h4>
+          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v3_desc">?剖???銝?臭?摰嗉??瑕?賂??湔?怎?蝡舀?靽∟陷??丰隡氬??蜓??閫?撣怒風?葦?撣怎?撖阡??瘙???摰??霅?渲?雿輻?寡?嚗??怎?撠平鈭箏?賢?隞交????縑敹蝙?冽???撘脩??Ｗ???/p>
         </div>
         <div style="background:rgba(192,57,43,0.15); border:1px solid rgba(192,57,43,0.3); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(192,57,43,0.22)'" onmouseout="this.style.background='rgba(192,57,43,0.15)'">
-          <div style="font-size:1.8rem; margin-bottom:12px;">❤️</div>
-          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:#f1948a;" data-i18n="phil_v4_title">以患者福祉為優先</h4>
-          <p style="font-size:0.87rem; color:rgba(255,200,195,0.7); line-height:1.9;" data-i18n="phil_v4_desc">一切努力的最終目的，是讓每一位患者都能獲得更有效、更安全、更經濟的醫療選擇。旭勝國際始終以患者的健康福祉作為最高指導原則，用專業與熱忱，為台灣的醫療環境帶來持續進步與正向改變。</p>
+          <div style="font-size:1.8rem; margin-bottom:12px;">?歹?</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:#f1948a;" data-i18n="phil_v4_title">隞交??蟡?芸?</h4>
+          <p style="font-size:0.87rem; color:rgba(255,200,195,0.7); line-height:1.9;" data-i18n="phil_v4_desc">銝????蝯???航?瘥?雿??賜敺???摰?蝬????????蝯誑????亙熒蝳?雿?擃?撠????典?璆剛??勗膨嚗?啁??憓葆靘?蝥脫郊?迤?霈?/p>
         </div>
       </div>
     </div>
@@ -948,53 +1072,53 @@
 <section id="services">
   <div class="services-wrap">
     <div style="text-align:center; margin-bottom:50px;" class="reveal">
-      <div class="section-label" data-i18n="serv_label">服務項目</div>
-      <h2 class="section-title" data-i18n="serv_title">全方位醫藥行銷解決方案</h2>
+      <div class="section-label" data-i18n="serv_label">???</div>
+      <h2 class="section-title" data-i18n="serv_title">?冽雿?亥??瑁圾瘙箸獢?/h2>
       <div class="divider" style="margin:0 auto 20px;"></div>
-      <p class="section-desc" style="margin:0 auto;" data-i18n="serv_desc">整合健保藥品、醫療器材及醫療行銷資源，為客戶提供專業、全面的服務體驗</p>
+      <p class="section-desc" style="margin:0 auto;" data-i18n="serv_desc">?游??乩??亙??????怎?銵鞈?嚗摰Ｘ??撠平??Ｙ???擃?</p>
     </div>
     <div class="services-grid">
       <div class="service-card reveal delay-1">
-        <div class="service-icon">💊</div>
-        <h3 data-i18n="s1_title">健保藥品行銷</h3>
-        <p data-i18n="s1_desc">提供健保藥品的市場分析、推廣策略及通路建立，協助廠商有效進入健保市場。</p>
+        <div class="service-icon">??</div>
+        <h3 data-i18n="s1_title">?乩??亙?銵</h3>
+        <p data-i18n="s1_desc">???乩??亙????游??撱???亙??楝撱箇?嚗??拙????脣?乩?撣??/p>
         <ul>
-          <li data-i18n="s1_li1">健保品項申請與協助</li>
-          <li data-i18n="s1_li2">醫院、診所拜訪推廣</li>
-          <li data-i18n="s1_li3">藥品市場分析報告</li>
-          <li data-i18n="s1_li4">通路開發與維護</li>
+          <li data-i18n="s1_li1">?乩????唾?????/li>
+          <li data-i18n="s1_li2">?恍?那??赤?典誨</li>
+          <li data-i18n="s1_li3">?亙?撣???勗?</li>
+          <li data-i18n="s1_li4">?楝??雁霅?/li>
         </ul>
       </div>
       <div class="service-card reveal delay-2">
-        <div class="service-icon">🩺</div>
-        <h3 data-i18n="s2_title">醫療器材代理</h3>
-        <p data-i18n="s2_desc">代理國內外優質醫療器材品牌，提供完整的產品導入、銷售與售後服務。</p>
+        <div class="service-icon">?征</div>
+        <h3 data-i18n="s2_title">?怎??冽?隞??</h3>
+        <p data-i18n="s2_desc">隞???憭鞈芷???????摰????乓?株??桀?????/p>
         <ul>
-          <li data-i18n="s2_li1">醫療器材進口代理</li>
-          <li data-i18n="s2_li2">產品教育訓練</li>
-          <li data-i18n="s2_li3">醫院標案協助</li>
-          <li data-i18n="s2_li4">器材維護與技術支援</li>
+          <li data-i18n="s2_li1">?怎??冽??脣隞??</li>
+          <li data-i18n="s2_li2">?Ｗ??閮毀</li>
+          <li data-i18n="s2_li3">?恍璅??</li>
+          <li data-i18n="s2_li4">?冽?蝬剛風??銵??/li>
         </ul>
       </div>
       <div class="service-card reveal delay-3">
-        <div class="service-icon">📊</div>
-        <h3 data-i18n="s3_title">市場進入策略</h3>
-        <p data-i18n="s3_desc">協助國內外醫療廠商制定台灣市場進入策略，提供完整的市場調查與商業規劃。</p>
+        <div class="service-icon">??</div>
+        <h3 data-i18n="s3_title">撣?脣蝑</h3>
+        <p data-i18n="s3_desc">??憭???摰????湧脣蝑嚗?靘??渡?撣隤踵??璆剛???/p>
         <ul>
-          <li data-i18n="s3_li1">市場調查與分析</li>
-          <li data-i18n="s3_li2">競品分析報告</li>
-          <li data-i18n="s3_li3">商業計畫書制定</li>
-          <li data-i18n="s3_li4">合作夥伴媒合</li>
+          <li data-i18n="s3_li1">撣隤踵????/li>
+          <li data-i18n="s3_li2">蝡嗅????勗?</li>
+          <li data-i18n="s3_li3">?平閮?詨摰?/li>
+          <li data-i18n="s3_li4">??憭乩撈慦?</li>
         </ul>
       </div>
       <div class="service-card reveal delay-4">
-        <div class="service-icon">🤝</div>
-        <h3 data-i18n="s5_title">醫療通路開發</h3>
-        <p data-i18n="s5_desc">整合全台醫療院所、連鎖藥局及通路資源，快速建立產品銷售網絡。</p>
+        <div class="service-icon">??</div>
+        <h3 data-i18n="s5_title">?怎??楝?</h3>
+        <p data-i18n="s5_desc">?游??典?怎??Ｘ?????亙??楝鞈?嚗翰?遣蝡??桃雯蝯～?/p>
         <ul>
-          <li data-i18n="s5_li1">醫學中心合作洽談</li>
-          <li data-i18n="s5_li2">地區醫院通路建立</li>
-          <li data-i18n="s5_li3">診所及藥局網絡</li>
+          <li data-i18n="s5_li1">?怠飛銝剖???瘣質?</li>
+          <li data-i18n="s5_li2">?啣??恍?楝撱箇?</li>
+          <li data-i18n="s5_li3">閮箸??撅蝬脩窗</li>
         </ul>
       </div>
     </div>
@@ -1004,30 +1128,30 @@
 <!-- WHY US -->
 <section id="why">
   <div style="text-align:center; margin-bottom:50px; max-width:1100px; margin:0 auto 50px;" class="reveal">
-    <div class="section-label" style="color:rgba(150,200,255,0.8);" data-i18n="why_label">為何選擇我們</div>
-    <h2 class="section-title" style="color:#fff;" data-i18n="why_title">旭勝國際的核心優勢</h2>
+    <div class="section-label" style="color:rgba(150,200,255,0.8);" data-i18n="why_label">?箔??豢???/div>
+    <h2 class="section-title" style="color:#fff;" data-i18n="why_title">?剖????敹??/h2>
     <div class="divider" style="margin:16px auto 0;"></div>
   </div>
   <div class="why-grid">
     <div class="why-card reveal delay-1">
       <div class="why-num" data-i18n="why1_num">20+</div>
-      <h4 data-i18n="why1_title">年豐富經驗</h4>
-      <p data-i18n="why1_desc">深耕台灣醫藥行銷市場超過二十年，累積豐富的產業知識與人脈網絡</p>
+      <h4 data-i18n="why1_title">撟渲?撖?撽?/h4>
+      <p data-i18n="why1_desc">瘛梯???亥??瑕??渲????僑嚗敞蝛?撖??Ｘ平?亥??犖?雯蝯?/p>
     </div>
     <div class="why-card reveal delay-2">
-      <div class="why-num" data-i18n="why2_num">專業</div>
-      <h4 data-i18n="why2_title">專業團隊</h4>
-      <p data-i18n="why2_desc">擁有醫藥、行銷專業背景的優秀團隊，提供最高品質的服務</p>
+      <div class="why-num" data-i18n="why2_num">撠平</div>
+      <h4 data-i18n="why2_title">撠平??</h4>
+      <p data-i18n="why2_desc">???怨???瑕?璆剛??舐??芰???嚗?靘?擃?鞈芰???</p>
     </div>
     <div class="why-card reveal delay-3">
-      <div class="why-num" data-i18n="why3_num">全台</div>
-      <h4 data-i18n="why3_title">服務網絡</h4>
-      <p data-i18n="why3_desc">遍及全台的醫療院所合作網絡，快速有效建立產品銷售管道</p>
+      <div class="why-num" data-i18n="why3_num">?典</div>
+      <h4 data-i18n="why3_title">??蝬脩窗</h4>
+      <p data-i18n="why3_desc">???典?????蝬脩窗嚗翰???遣蝡??桃恣??/p>
     </div>
     <div class="why-card reveal delay-4">
-      <div class="why-num" data-i18n="why4_num">一站式</div>
-      <h4 data-i18n="why4_title">整合服務</h4>
-      <p data-i18n="why4_desc">從市場分析到通路推廣，提供完整的一站式醫藥行銷整合服務</p>
+      <div class="why-num" data-i18n="why4_num">銝蝡?</div>
+      <h4 data-i18n="why4_title">?游???</h4>
+      <p data-i18n="why4_desc">敺??游???楝?典誨嚗?靘??渡?銝蝡??怨銵?游???</p>
     </div>
   </div>
 </section>
@@ -1036,66 +1160,66 @@
 <section id="contact">
   <div class="contact-wrap">
     <div class="contact-info reveal-left">
-      <div class="section-label" data-i18n="contact_label">聯絡我們</div>
-      <h2 class="section-title" data-i18n="contact_title">歡迎與我們聯繫</h2>
+      <div class="section-label" data-i18n="contact_label">?舐窗??/div>
+      <h2 class="section-title" data-i18n="contact_title">甇∟????蝜?/h2>
       <div class="divider"></div>
-      <p style="color:var(--gray-mid); margin-bottom:32px; font-size:0.95rem;" data-i18n="contact_desc">無論您有任何醫藥行銷需求，歡迎隨時與我們聯繫，我們將盡快為您提供專業建議。</p>
+      <p style="color:var(--gray-mid); margin-bottom:32px; font-size:0.95rem;" data-i18n="contact_desc">?∟??冽?隞颱??怨銵?瘙?甇∟??冽????蝜恬????∪翰?箸??撠平撱箄降??/p>
       <div class="info-row">
-        <div class="info-icon">👤</div>
+        <div class="info-icon">?</div>
         <div>
-          <h5 data-i18n="info_person_lbl">負責人</h5>
-          <p data-i18n="info_person">謝聯旭 Benjamin Hsieh｜Director</p>
+          <h5 data-i18n="info_person_lbl">鞎痊鈭?/h5>
+          <p data-i18n="info_person">雓??Benjamin Hsieh嚚irector</p>
         </div>
       </div>
       <div class="info-row">
-        <div class="info-icon">📍</div>
+        <div class="info-icon">??</div>
         <div>
-          <h5 data-i18n="info_addr_lbl">公司地址</h5>
-          <p data-i18n="info_addr">高雄市鼓山區明華路253號14樓<br>14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan</p>
+          <h5 data-i18n="info_addr_lbl">?砍?啣?</h5>
+          <p data-i18n="info_addr">擃?撣?撅勗??頝?53??4璅?br>14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan</p>
         </div>
       </div>
       <div class="info-row">
-        <div class="info-icon">📱</div>
+        <div class="info-icon">?</div>
         <div>
-          <h5 data-i18n="info_mobile_lbl">行動電話</h5>
+          <h5 data-i18n="info_mobile_lbl">銵??餉店</h5>
           <p><a href="tel:+886932344193">886-932-344-193</a></p>
         </div>
       </div>
       <div class="info-row">
-        <div class="info-icon">📧</div>
+        <div class="info-icon">?</div>
         <div>
-          <h5 data-i18n="info_email_lbl">電子郵件</h5>
+          <h5 data-i18n="info_email_lbl">?餃??萎辣</h5>
           <p><a href="mailto:benjaminhsieh168@gmail.com">benjaminhsieh168@gmail.com</a></p>
         </div>
       </div>
       <div class="info-row">
-        <div class="info-icon">💬</div>
+        <div class="info-icon">?</div>
         <div>
           <h5>Line ID</h5>
           <p>0932344193</p>
         </div>
       </div>
       <div class="info-row">
-        <div class="info-icon">🏢</div>
+        <div class="info-icon">?</div>
         <div>
-          <h5 data-i18n="info_taxid_lbl">統一編號</h5>
+          <h5 data-i18n="info_taxid_lbl">蝯曹?蝺刻?</h5>
           <p>60692333</p>
         </div>
       </div>
     </div>
     <div class="contact-map reveal-right">
-      <h3 data-i18n="map_title">公司位置</h3>
+      <h3 data-i18n="map_title">?砍雿蔭</h3>
       <div class="map-wrap">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.0!2d120.2947!3d22.6637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e04c85a7f3a4f%3A0x0!2z6auY5Y2X5ZyL5Y2X5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw&q=高雄市鼓山區明華路253號"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.0!2d120.2947!3d22.6637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e04c85a7f3a4f%3A0x0!2z6auY5Y2X5ZyL5Y2X5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw&q=擃?撣?撅勗??頝?53??
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="旭勝國際有限公司位置"></iframe>
+          title="?剖??????砍雿蔭"></iframe>
       </div>
       <div class="map-addr-bar">
-        <span>📍</span>
-        <span data-i18n="info_addr_short">高雄市鼓山區明華路253號14樓</span>
-        <a href="https://maps.google.com/?q=高雄市鼓山區明華路253號" target="_blank" rel="noopener" class="map-link" data-i18n="map_open">在 Google Maps 開啟</a>
+        <span>??</span>
+        <span data-i18n="info_addr_short">擃?撣?撅勗??頝?53??4璅?/span>
+        <a href="https://maps.google.com/?q=擃?撣?撅勗??頝?53?? target="_blank" rel="noopener" class="map-link" data-i18n="map_open">??Google Maps ??</a>
       </div>
     </div>
   </div>
@@ -1105,91 +1229,91 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand reveal">
-      <div class="footer-logo-text" data-i18n="footer_company">旭勝國際有限公司</div>
+      <div class="footer-logo-text" data-i18n="footer_company">?剖??????砍</div>
       <span class="footer-logo-sub" data-i18n="footer_company_en">HsuSheng International Co., Ltd.</span>
-      <p data-i18n="footer_desc">專注醫藥行銷領域，提供健保藥品、醫療器材及市場開發等全方位服務，是您進入台灣醫療市場最可靠的專業夥伴。</p>
+      <p data-i18n="footer_desc">撠釣?怨銵??嚗?靘靽????撣?蝑?嫣???嚗?券脣?啁?怎?撣??舫???璆剖丰隡氬?/p>
     </div>
     <div class="footer-col reveal delay-1">
-      <h4 data-i18n="footer_quick">快速連結</h4>
+      <h4 data-i18n="footer_quick">敹恍??</h4>
       <ul>
-        <li><a href="#about" data-i18n="nav_about">關於我們</a></li>
-        <li><a href="#services" data-i18n="nav_services">服務項目</a></li>
-        <li><a href="#why" data-i18n="nav_why">為何選擇我們</a></li>
-        <li><a href="#contact" data-i18n="nav_contact">聯絡我們</a></li>
+        <li><a href="#about" data-i18n="nav_about">???/a></li>
+        <li><a href="#services" data-i18n="nav_services">???</a></li>
+        <li><a href="#why" data-i18n="nav_why">?箔??豢???/a></li>
+        <li><a href="#contact" data-i18n="nav_contact">?舐窗??/a></li>
       </ul>
     </div>
     <div class="footer-col reveal delay-2">
-      <h4 data-i18n="footer_contact_title">聯絡資訊</h4>
+      <h4 data-i18n="footer_contact_title">?舐窗鞈?</h4>
       <ul>
-        <li><a href="tel:+886932344193">📱 886-932-344-193</a></li>
-        <li><a href="mailto:benjaminhsieh168@gmail.com">📧 benjaminhsieh168@gmail.com</a></li>
-        <li><span style="color:rgba(255,255,255,0.5); font-size:0.84rem;">💬 Line: 0932344193</span></li>
+        <li><a href="tel:+886932344193">? 886-932-344-193</a></li>
+        <li><a href="mailto:benjaminhsieh168@gmail.com">? benjaminhsieh168@gmail.com</a></li>
+        <li><span style="color:rgba(255,255,255,0.5); font-size:0.84rem;">? Line: 0932344193</span></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p data-i18n="footer_copy">© 2025 旭勝國際有限公司 HsuSheng International Co., Ltd. All Rights Reserved.</p>
+    <p data-i18n="footer_copy">穢 2025 ?剖??????砍 HsuSheng International Co., Ltd. All Rights Reserved.</p>
   </div>
 </footer>
 
 <script>
 const i18n = {
   zh: {
-    nav_company_en:'HsuSheng International', nav_company_zh:'旭勝國際有限公司',
-    nav_about:'關於我們', nav_services:'服務項目', nav_why:'為何選擇我們', nav_contact:'聯絡我們',
-    hero_badge:'醫藥行銷專業夥伴', hero_title:'旭勝國際', hero_title2:'專業醫藥行銷服務',
-    hero_sub:'深耕健保藥品・醫療器材・醫療行銷領域，為您的醫療事業提供全方位專業解決方案',
-    hero_cta1:'了解服務項目', hero_cta2:'立即聯繫', scroll:'SCROLL',
-    about_label:'關於我們', about_title:'專注醫藥行銷<br>創造醫療價值',
-    about_visual_title:'旭勝國際有限公司', about_visual_sub:'HsuSheng International Co., Ltd.',
-    stat1_num:'20+', stat1_lbl:'年專業經驗', stat2_num:'100+', stat2_lbl:'合作廠商',
-    stat3_num:'500+', stat3_lbl:'服務客戶', stat4_num:'全台', stat4_lbl:'服務網絡',
-    about_desc1:'旭勝國際有限公司成立以來，致力於提供最專業的醫藥行銷服務，以健保藥品推廣、醫療器材代理及醫療通路開發為核心業務，深耕台灣醫療市場。',
-    about_desc2:'我們擁有豐富的醫療產業資源，與各大醫療機構、診所及藥局建立長期穩定的合作關係，協助國內外醫療廠商進入台灣市場，提供從市場分析到通路推廣的一站式服務。',
-    feat1_title:'健保藥品行銷', feat1_desc:'專業的健保藥品推廣與市場開發，協助建立醫療通路',
-    feat2_title:'醫療器材代理', feat2_desc:'嚴選優質醫療器材，提供完整的產品代理與銷售服務',
-    feat3_title:'市場通路開發', feat3_desc:'整合全台醫療院所資源，快速建立產品銷售網絡',
-    serv_label:'服務項目', serv_title:'全方位醫藥行銷解決方案',
-    serv_desc:'整合健保藥品、醫療器材及醫療行銷資源，為客戶提供專業、全面的服務體驗',
-    s1_title:'健保藥品行銷', s1_desc:'提供健保藥品的市場分析、推廣策略及通路建立，協助廠商有效進入健保市場。',
-    s1_li1:'健保品項申請與協助', s1_li2:'醫院、診所拜訪推廣', s1_li3:'藥品市場分析報告', s1_li4:'通路開發與維護',
-    s2_title:'醫療器材代理', s2_desc:'代理國內外優質醫療器材品牌，提供完整的產品導入、銷售與售後服務。',
-    s2_li1:'醫療器材進口代理', s2_li2:'產品教育訓練', s2_li3:'醫院標案協助', s2_li4:'器材維護與技術支援',
-    s3_title:'市場進入策略', s3_desc:'協助國內外醫療廠商制定台灣市場進入策略，提供完整的市場調查與商業規劃。',
-    s3_li1:'市場調查與分析', s3_li2:'競品分析報告', s3_li3:'商業計畫書制定', s3_li4:'合作夥伴媒合',
-    s5_title:'醫療通路開發', s5_desc:'整合全台醫療院所、連鎖藥局及通路資源，快速建立產品銷售網絡。',
-    s5_li1:'醫學中心合作洽談', s5_li2:'地區醫院通路建立', s5_li3:'診所及藥局網絡', s5_li4:'電商及線上通路',
-    why_label:'為何選擇我們', why_title:'旭勝國際的核心優勢',
-    why1_num:'20+', why1_title:'年豐富經驗', why1_desc:'深耕台灣醫藥行銷市場超過二十年，累積豐富的產業知識與人脈網絡',
-    why2_num:'專業', why2_title:'專業團隊', why2_desc:'擁有醫藥、行銷專業背景的優秀團隊，提供最高品質的服務',
-    why3_num:'全台', why3_title:'服務網絡', why3_desc:'遍及全台的醫療院所合作網絡，快速有效建立產品銷售管道',
-    why4_num:'一站式', why4_title:'整合服務', why4_desc:'從市場分析到通路推廣，提供完整的一站式醫藥行銷整合服務',
-    contact_label:'聯絡我們', contact_title:'歡迎與我們聯繫',
-    contact_desc:'無論您有任何醫藥行銷需求，歡迎隨時與我們聯繫，我們將盡快為您提供專業建議。',
-    info_person_lbl:'負責人', info_person:'謝聯旭 Benjamin Hsieh｜Director',
-    info_addr_lbl:'公司地址', info_addr:'高雄市鼓山區明華路253號14樓<br>14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
-    info_addr_short:'高雄市鼓山區明華路253號14樓',
-    info_mobile_lbl:'行動電話', info_email_lbl:'電子郵件', info_taxid_lbl:'統一編號',
-    phil_label:'我們的理念', phil_title:'以醫療價值為核心，以患者利益為依歸',
-    phil_v1_title:'嚴選優質產品', phil_v1_desc:'我們深信，唯有真正優質的產品才能創造醫療價值。在引進每一項藥品或醫療器材之前，旭勝國際均進行嚴格的品質評估與臨床效益審核，確保所代理的產品具備充分的科學實證，能切實提升醫療品質。',
-    phil_v2_title:'符合經濟效益', phil_v2_desc:'在醫療資源有限的現實環境下，我們積極尋找療效卓越且具備成本效益的解決方案，協助醫療端在合理的預算範圍內，為患者提供最高水準的醫療照護，讓每一分醫療資源都能發揮最大效益。',
-    phil_v3_title:'以醫療端為夥伴', phil_v3_desc:'旭勝國際不只是一家行銷公司，更是醫療端最信賴的長期夥伴。我們主動了解醫師、護理師與藥師的實際需求，提供完整的產品知識支援與使用培訓，讓醫療專業人員能夠以最充分的信心使用我們所引進的產品。',
-    phil_v4_title:'以患者福祉為優先', phil_v4_desc:'一切努力的最終目的，是讓每一位患者都能獲得更有效、更安全、更經濟的醫療選擇。旭勝國際始終以患者的健康福祉作為最高指導原則，用專業與熱忱，為台灣的醫療環境帶來持續進步與正向改變。',
-    map_title:'公司位置', map_open:'在 Google Maps 開啟',
-    footer_company:'旭勝國際有限公司', footer_company_en:'HsuSheng International Co., Ltd.',
-    footer_desc:'專注醫藥行銷領域，提供健保藥品、醫療器材及市場開發等全方位服務，是您進入台灣醫療市場最可靠的專業夥伴。',
-    footer_quick:'快速連結', footer_contact_title:'聯絡資訊',
-    footer_copy:'© 2025 旭勝國際有限公司 HsuSheng International Co., Ltd. All Rights Reserved.',
+    nav_company_en:'HsuSheng International', nav_company_zh:'?剖??????砍',
+    nav_about:'???, nav_services:'???', nav_why:'?箔??豢???, nav_contact:'?舐窗??,
+    hero_badge:'?怨銵撠平憭乩撈', hero_title:'?剖???', hero_title2:'撠平?怨銵??',
+    hero_sub:'瘛梯靽??怎??冽??駁???琿????箸???璆剜?靘?嫣?撠平閫?捱?寞?',
+    hero_cta1:'鈭圾???', hero_cta2:'蝡?舐鼠', scroll:'SCROLL',
+    about_label:'???, about_title:'撠釣?怨銵<br>?菟???,
+    about_visual_title:'?剖??????砍', about_visual_sub:'HsuSheng International Co., Ltd.',
+    stat1_num:'20+', stat1_lbl:'撟游?璆剔?撽?, stat2_num:'100+', stat2_lbl:'??撱?',
+    stat3_num:'500+', stat3_lbl:'??摰Ｘ', stat4_num:'?典', stat4_lbl:'??蝬脩窗',
+    about_desc1:'?剖??????砍??隞乩?嚗????撠平??亥??瑟???隞亙靽?撱???誨???怎??楝??箸敹平??瘛梯?????氬?,
+    about_desc2:'????撖??怎??Ｘ平鞈?嚗??之?怎?璈??那??撅撱箇??瑟?蝛拙???雿?靽???憭???脣?啁撣嚗?靘?撣???圈楝?典誨??蝡?????,
+    feat1_title:'?乩??亙?銵', feat1_desc:'撠平?靽?撱??撣?嚗??拙遣蝡?楝',
+    feat2_title:'?怎??冽?隞??', feat2_desc:'?湧?芾釭?怎??冽?嚗?靘??渡??Ｗ?隞????格???,
+    feat3_title:'撣?楝?', feat3_desc:'?游??典?怎??Ｘ?鞈?嚗翰?遣蝡??桃雯蝯?,
+    serv_label:'???', serv_title:'?冽雿?亥??瑁圾瘙箸獢?,
+    serv_desc:'?游??乩??亙??????怎?銵鞈?嚗摰Ｘ??撠平??Ｙ???擃?',
+    s1_title:'?乩??亙?銵', s1_desc:'???乩??亙????游??撱???亙??楝撱箇?嚗??拙????脣?乩?撣??,
+    s1_li1:'?乩????唾?????, s1_li2:'?恍?那??赤?典誨', s1_li3:'?亙?撣???勗?', s1_li4:'?楝??雁霅?,
+    s2_title:'?怎??冽?隞??', s2_desc:'隞???憭鞈芷???????摰????乓?株??桀?????,
+    s2_li1:'?怎??冽??脣隞??', s2_li2:'?Ｗ??閮毀', s2_li3:'?恍璅??', s2_li4:'?冽?蝬剛風??銵??,
+    s3_title:'撣?脣蝑', s3_desc:'??憭???摰????湧脣蝑嚗?靘??渡?撣隤踵??璆剛???,
+    s3_li1:'撣隤踵????, s3_li2:'蝡嗅????勗?', s3_li3:'?平閮?詨摰?, s3_li4:'??憭乩撈慦?',
+    s5_title:'?怎??楝?', s5_desc:'?游??典?怎??Ｘ?????亙??楝鞈?嚗翰?遣蝡??桃雯蝯～?,
+    s5_li1:'?怠飛銝剖???瘣質?', s5_li2:'?啣??恍?楝撱箇?', s5_li3:'閮箸??撅蝬脩窗', s5_li4:'?餃???銝楝',
+    why_label:'?箔??豢???, why_title:'?剖????敹??,
+    why1_num:'20+', why1_title:'撟渲?撖?撽?, why1_desc:'瘛梯???亥??瑕??渲????僑嚗敞蝛?撖??Ｘ平?亥??犖?雯蝯?,
+    why2_num:'撠平', why2_title:'撠平??', why2_desc:'???怨???瑕?璆剛??舐??芰???嚗?靘?擃?鞈芰???',
+    why3_num:'?典', why3_title:'??蝬脩窗', why3_desc:'???典?????蝬脩窗嚗翰???遣蝡??桃恣??,
+    why4_num:'銝蝡?', why4_title:'?游???', why4_desc:'敺??游???楝?典誨嚗?靘??渡?銝蝡??怨銵?游???',
+    contact_label:'?舐窗??, contact_title:'甇∟????蝜?,
+    contact_desc:'?∟??冽?隞颱??怨銵?瘙?甇∟??冽????蝜恬????∪翰?箸??撠平撱箄降??,
+    info_person_lbl:'鞎痊鈭?, info_person:'雓??Benjamin Hsieh嚚irector',
+    info_addr_lbl:'?砍?啣?', info_addr:'擃?撣?撅勗??頝?53??4璅?br>14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
+    info_addr_short:'擃?撣?撅勗??頝?53??4璅?,
+    info_mobile_lbl:'銵??餉店', info_email_lbl:'?餃??萎辣', info_taxid_lbl:'蝯曹?蝺刻?',
+    phil_label:'???艙', phil_title:'隞仿??潛?詨?嚗誑???靘飛',
+    phil_v1_title:'?湧?芾釭?Ｗ?', phil_v1_desc:'?楛靽∴??舀??迤?芾釭????賢???潦撘脫?銝????怎??冽?銋?嚗?????脰??湔??鞈芾?隡啗??典???撖拇嚗Ⅱ靽?隞????????蝘飛撖西?嚗?祕???怎??釭??,
+    phil_v2_title:'蝚血?蝬???', phil_v2_desc:'?券??皞????曉祕?啣?銝???璆萄??曄???頞??瑕?????圾瘙箸獢???怎?蝡臬????蝞??嚗???靘?擃偌皞??怎??扯風嚗?瘥????皞?賜?格?憭扳???,
+    phil_v3_title:'隞仿?垢?箏丰隡?, phil_v3_desc:'?剖???銝?臭?摰嗉??瑕?賂??湔?怎?蝡舀?靽∟陷??丰隡氬??蜓??閫?撣怒風?葦?撣怎?撖阡??瘙???摰??霅?渲?雿輻?寡?嚗??怎?撠平鈭箏?賢?隞交????縑敹蝙?冽???撘脩??Ｗ???,
+    phil_v4_title:'隞交??蟡?芸?', phil_v4_desc:'銝????蝯???航?瘥?雿??賜敺???摰?蝬????????蝯誑????亙熒蝳?雿?擃?撠????典?璆剛??勗膨嚗?啁??憓葆靘?蝥脫郊?迤?霈?,
+    map_title:'?砍雿蔭', map_open:'??Google Maps ??',
+    footer_company:'?剖??????砍', footer_company_en:'HsuSheng International Co., Ltd.',
+    footer_desc:'撠釣?怨銵??嚗?靘靽????撣?蝑?嫣???嚗?券脣?啁?怎?撣??舫???璆剖丰隡氬?,
+    footer_quick:'敹恍??', footer_contact_title:'?舐窗鞈?',
+    footer_copy:'穢 2025 ?剖??????砍 HsuSheng International Co., Ltd. All Rights Reserved.',
   },
   en: {
     nav_company_en:'HsuSheng International', nav_company_zh:'HsuSheng International Co., Ltd.',
     nav_about:'About Us', nav_services:'Services', nav_why:'Why Choose Us', nav_contact:'Contact Us',
     hero_badge:'Professional Pharmaceutical Marketing Partner', hero_title:'HsuSheng International',
     hero_title2:'Professional Pharma Marketing',
-    hero_sub:'Specializing in NHI drugs, medical devices & healthcare marketing — your complete solution for the Taiwan medical market.',
+    hero_sub:'Specializing in NHI drugs, medical devices & healthcare marketing ??your complete solution for the Taiwan medical market.',
     hero_cta1:'Our Services', hero_cta2:'Contact Us', scroll:'SCROLL',
     about_label:'About Us', about_title:'Focused on Pharma Marketing<br>Creating Healthcare Value',
-    about_visual_title:'HsuSheng International Co., Ltd.', about_visual_sub:'旭勝國際有限公司',
+    about_visual_title:'HsuSheng International Co., Ltd.', about_visual_sub:'?剖??????砍',
     stat1_num:'20+', stat1_lbl:'Years Experience', stat2_num:'100+', stat2_lbl:'Partners',
     stat3_num:'500+', stat3_lbl:'Clients', stat4_num:'NW', stat4_lbl:'Nationwide',
     about_desc1:'Since its founding, HsuSheng International has been committed to the most professional pharmaceutical marketing services, with NHI drug promotion, medical device distribution, and healthcare channel development as core businesses.',
@@ -1214,58 +1338,58 @@ const i18n = {
     why4_num:'1-Stop', why4_title:'Integrated Services', why4_desc:'From market analysis to channel promotion, a complete one-stop pharma marketing integration service',
     contact_label:'Contact Us', contact_title:'Get in Touch With Us',
     contact_desc:'Whatever your pharmaceutical marketing needs, feel free to contact us anytime and we will provide professional advice as soon as possible.',
-    info_person_lbl:'Contact Person', info_person:'Benjamin Hsieh｜Director',
+    info_person_lbl:'Contact Person', info_person:'Benjamin Hsieh嚚irector',
     info_addr_lbl:'Address', info_addr:'14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
     info_addr_short:'14F., No.253, Minghua Rd., Kaohsiung',
     info_mobile_lbl:'Mobile', info_email_lbl:'Email', info_taxid_lbl:'Tax ID',
     map_title:'Our Location', map_open:'Open in Google Maps',
-    footer_company:'HsuSheng International Co., Ltd.', footer_company_en:'旭勝國際有限公司',
-    footer_desc:'Focused on pharmaceutical marketing, providing NHI drugs, medical devices and market development — your most reliable professional partner for entering the Taiwan medical market.',
+    footer_company:'HsuSheng International Co., Ltd.', footer_company_en:'?剖??????砍',
+    footer_desc:'Focused on pharmaceutical marketing, providing NHI drugs, medical devices and market development ??your most reliable professional partner for entering the Taiwan medical market.',
     footer_quick:'Quick Links', footer_contact_title:'Contact Info',
-    footer_copy:'© 2025 HsuSheng International Co., Ltd. All Rights Reserved.',
+    footer_copy:'穢 2025 HsuSheng International Co., Ltd. All Rights Reserved.',
   },
   ja: {
-    nav_company_en:'HsuSheng International', nav_company_zh:'旭勝国際有限公司',
-    nav_about:'会社概要', nav_services:'サービス内容', nav_why:'選ばれる理由', nav_contact:'お問い合わせ',
-    hero_badge:'医薬品マーケティング専門パートナー', hero_title:'旭勝国際',
-    hero_title2:'プロの医薬マーケティング',
-    hero_sub:'健康保険薬品・医療機器・医療マーケティング分野に特化し、台湾医療市場への総合的な専門ソリューションを提供します。',
-    hero_cta1:'サービスを見る', hero_cta2:'お問い合わせ', scroll:'SCROLL',
-    about_label:'会社概要', about_title:'医薬マーケティングに特化<br>医療価値の創造',
-    about_visual_title:'旭勝国際有限公司', about_visual_sub:'HsuSheng International Co., Ltd.',
-    stat1_num:'20+', stat1_lbl:'年の専門経験', stat2_num:'100+', stat2_lbl:'協力メーカー',
-    stat3_num:'500+', stat3_lbl:'取引顧客', stat4_num:'全国', stat4_lbl:'サービスネットワーク',
-    about_desc1:'旭勝国際有限公司は設立以来、最も専門的な医薬マーケティングサービスの提供に注力してきました。健康保険薬品の推進、医療機器の代理店業務、医療チャネル開発をコアビジネスとして台湾医療市場に深く根ざしています。',
-    about_desc2:'豊富な医療産業リソースを持ち、主要な医療機関、クリニック、薬局と長期的かつ安定した協力関係を構築しています。市場分析からチャネル推進までのワンストップサービスを提供しています。',
-    feat1_title:'健保薬品マーケティング', feat1_desc:'専門的な健保薬品の推進と市場開発で医療チャネルを構築',
-    feat2_title:'医療機器代理店', feat2_desc:'厳選された医療機器の完全な代理店・販売サービスを提供',
-    feat3_title:'市場・チャネル開発', feat3_desc:'全国の医療機関リソースを統合し製品販売ネットワークを構築',
-    serv_label:'サービス内容', serv_title:'総合的な医薬マーケティングソリューション',
-    serv_desc:'健保薬品・医療機器・医療マーケティングリソースを統合し、専門的かつ包括的なサービスを提供',
-    s1_title:'健保薬品マーケティング', s1_desc:'健保薬品の市場分析、プロモーション戦略、チャネル構築を提供し、メーカーの健保市場参入を支援します。',
-    s1_li1:'健保品目申請・支援', s1_li2:'病院・クリニック訪問推進', s1_li3:'医薬品市場分析レポート', s1_li4:'チャネル開発・維持',
-    s2_title:'医療機器代理店', s2_desc:'国内外の優質医療機器ブランドを代理し、完全な製品導入・販売・アフターサービスを提供します。',
-    s2_li1:'医療機器輸入代理', s2_li2:'製品教育・トレーニング', s2_li3:'病院入札支援', s2_li4:'機器メンテナンス・技術サポート',
-    s3_title:'市場参入戦略', s3_desc:'国内外の医療メーカーの台湾市場参入戦略策定を支援し、包括的な市場調査と事業計画を提供します。',
-    s3_li1:'市場調査・分析', s3_li2:'競合分析レポート', s3_li3:'事業計画策定', s3_li4:'パートナーマッチング',
-    s5_title:'医療チャネル開発', s5_desc:'全国の医療機関・チェーン薬局・チャネルリソースを統合し、製品販売ネットワークを迅速に構築します。',
-    s5_li1:'医療センター協力交渉', s5_li2:'地域病院チャネル構築', s5_li3:'クリニック・薬局ネットワーク', s5_li4:'EC・オンラインチャネル',
-    why_label:'選ばれる理由', why_title:'旭勝国際のコアアドバンテージ',
-    why1_num:'20+', why1_title:'年の豊富な経験', why1_desc:'台湾医薬マーケティング市場で20年以上深く経験を積み、豊富な業界知識と人脈ネットワークを蓄積',
-    why2_num:'専門', why2_title:'専門チーム', why2_desc:'医薬・マーケティング専門バックグラウンドを持つ優れたチームが最高品質のサービスを提供',
-    why3_num:'全国', why3_title:'サービスネットワーク', why3_desc:'全国の医療機関協力ネットワークで製品販売チャネルを迅速かつ効果的に構築',
-    why4_num:'一本化', why4_title:'統合サービス', why4_desc:'市場分析からチャネル推進まで、完全なワンストップ医薬マーケティング統合サービスを提供',
-    contact_label:'お問い合わせ', contact_title:'お気軽にご連絡ください',
-    contact_desc:'どのような医薬マーケティングのご需要もお気軽にお問い合わせください。できるだけ早く専門的なアドバイスをご提供いたします。',
-    info_person_lbl:'担当者', info_person:'謝聯旭 Benjamin Hsieh｜Director',
-    info_addr_lbl:'会社住所', info_addr:'14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
+    nav_company_en:'HsuSheng International', nav_company_zh:'?剖??賡????砍',
+    nav_about:'隡冗璁?', nav_services:'?萸??捆', nav_why:'?詻???', nav_contact:'??????',
+    hero_badge:'?餉???潦??喋撠??????, hero_title:'?剖??賡?',
+    hero_title2:'??桀?研??潦??喋',
+    hero_sub:'?亙熒靽?砍??餃???具?餌???晞????啣???孵??皝曉???氬?桃????芸???賬?乓?瑯?喋??????,
+    hero_cta1:'?萸?????, hero_cta2:'??????', scroll:'SCROLL',
+    about_label:'隡冗璁?', about_title:'?餉??晞????啜?孵?<br>?餌?靘∪扎?菟?,
+    about_visual_title:'?剖??賡????砍', about_visual_sub:'HsuSheng International Co., Ltd.',
+    stat1_num:'20+', stat1_lbl:'撟氬撠?蝯?', stat2_num:'100+', stat2_lbl:'???～?怒',
+    stat3_num:'500+', stat3_lbl:'??憿批恥', stat4_num:'?典', stat4_lbl:'?萸?????潦',
+    about_desc1:'?剖??賡????砍?航身蝡誑?乓??????餉??晞????啜?潦??嫘???急釣???艾??整??摨瑚??箄??券脯???具隞??摨平???????恍??箝??喋???具??血皝曉???氬瘛晞??嫘?????,
+    about_desc2:'鞊??芸?璆准?賬?嫘???蜓閬?餌?璈??芥???撅?券???摰??????Ｖ???蝭??艾??整????游?????????急?脯?扼?胯?嫘????萸???靘??艾??整???,
+    feat1_title:'?乩??砍???晞?????, feat1_desc:'撠???乩??砍??格?脯撣??批??????怒?瑽?',
+    feat2_title:'?餌?璈隞??摨?, feat2_desc:'?喲??????具摰?芯誨???餉痔憯脯?潦??嫘???',
+    feat3_title:'撣?颯?????恍???, feat3_desc:'?典?桀???Ｕ?賬?嫘?蝯勗??ˊ?痔憯脯????胯?胯?瑽?',
+    serv_label:'?萸??捆', serv_title:'蝺???餉??晞????啜?芥?潦?扼',
+    serv_desc:'?乩??砍??餃???具?餌???晞????啜?賬?嫘?蝯勗???????文??祉??芥?潦??嫘???',
+    s1_title:'?乩??砍???晞?????, s1_desc:'?乩??砍??桀??游????准?潦?扼?衣??????急?蝭?????潦?潦?乩?撣???氬??整???,
+    s1_li1:'?乩???唾??餅??, s1_li2:'??颯?芥??閮芸??券?, s1_li3:'?餉???游?????, s1_li4:'????餌雁??,
+    s2_title:'?餌?璈隞??摨?, s2_desc:'?賢?憭?芾釭?餌?璈??喋??誨?????具鋆賢?撠?餉痔憯脯?Ｕ??踴?萸???靘??整???,
+    s2_li1:'?餌?璈頛詨隞??', s2_li2:'鋆賢???颯??研???, s2_li3:'??交?舀', s2_li4:'璈?～???喋?餅?銵???,
+    s3_title:'撣??衣', s3_desc:'?賢?憭?餌??～?怒?桀皝曉??游??交?亦?摰??舀???祉??芸??渲矽?颯鈭平閮??靘??整???,
+    s3_li1:'撣隤踵?餃???, s3_li2:'蝡嗅????研??潦?', s3_li3:'鈭平閮蝑?', s3_li4:'????潦????喋',
+    s5_title:'?餌????', s5_desc:'?典?桀???Ｕ??潦?砍??颯?????怒?賬?嫘?蝯勗??ˊ?痔憯脯????胯?胯?餈瑽????,
+    s5_li1:'?餌??颯?踴??鈭斗?', s5_li2:'?啣????瑽?', s5_li3:'?胯???胯?砍?????潦', s5_li4:'EC?颯?喋?扎??',
+    why_label:'?詻???', why_title:'?剖??賡??柴?Ｕ???喋??潦',
+    why1_num:'20+', why1_title:'撟氬鞊??芰?擉?, why1_desc:'?唳嗾?餉??晞????啣??氬20撟港誑銝楛??擉?蝛??撖璆剔??亥??其犖?????胯?胯???',
+    why2_num:'撠?', why2_title:'撠????, why2_desc:'?餉?颯??潦??喋撠????胯?押?喋????文??????擃?鞈芥?萸???靘?,
+    why3_num:'?典', why3_title:'?萸?????潦', why3_desc:'?典?桀???Ｗ??????胯?胯鋆賢?鞎拙ㄡ???????文???急?蝭?,
+    why4_num:'銝?砍?', why4_title:'蝯勗??萸?', why4_desc:'撣???????券脯?扼??具?胯?嫘????餉??晞????啁絞??潦??嫘???',
+    contact_label:'??????', contact_title:'??頠賬??窗????',
+    contact_desc:'?押???芸?研??潦??喋?柴??閬???頠賬????????????????押?撠???Ｕ???嫘???靘????整???,
+    info_person_lbl:'????, info_person:'雓??Benjamin Hsieh嚚irector',
+    info_addr_lbl:'隡冗雿?', info_addr:'14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
     info_addr_short:'14F., No.253, Minghua Rd., Kaohsiung',
-    info_mobile_lbl:'携帯電話', info_email_lbl:'メール', info_taxid_lbl:'統一番号',
-    map_title:'会社の所在地', map_open:'Google マップで開く',
-    footer_company:'旭勝国際有限公司', footer_company_en:'HsuSheng International Co., Ltd.',
-    footer_desc:'医薬マーケティング分野に特化し、健保薬品・医療機器・市場開発などの総合サービスを提供する台湾医療市場参入の最も信頼できるパートナーです。',
-    footer_quick:'クイックリンク', footer_contact_title:'連絡先情報',
-    footer_copy:'© 2025 旭勝国際有限公司 HsuSheng International Co., Ltd. All Rights Reserved.',
+    info_mobile_lbl:'?箏葛?餉店', info_email_lbl:'?～??, info_taxid_lbl:'蝯曹??芸',
+    map_title:'隡冗?格??典', map_open:'Google ?????',
+    footer_company:'?剖??賡????砍', footer_company_en:'HsuSheng International Co., Ltd.',
+    footer_desc:'?餉??晞????啣???孵??靽??餌?璈?餃??湧??箝?押蝺??萸???靘??皝曉???游??乓??縑?潦??????潦??,
+    footer_quick:'?胯??芥??, footer_contact_title:'??窗????,
+    footer_copy:'穢 2025 ?剖??賡????砍 HsuSheng International Co., Ltd. All Rights Reserved.',
   }
 };
 
@@ -1284,7 +1408,7 @@ function setLang(lang) {
   });
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active',
-      btn.textContent.trim() === (lang==='zh'?'中文':lang==='en'?'EN':'日本語'));
+      btn.textContent.trim() === (lang==='zh'?'銝剜?':lang==='en'?'EN':'?交隤?));
   });
   document.documentElement.lang = lang==='zh'?'zh-TW':lang==='ja'?'ja':'en';
 }
