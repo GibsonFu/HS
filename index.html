@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>旭勝國際有限公司 | HsuSheng International</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #c0392b;
+      --dark-red: #922b21;
+      --blue-deep: #0a1628;
+      --blue-mid: #0d2144;
+      --blue-light: #1a3a6b;
+      --blue-bright: #2563a8;
+      --blue-glass: rgba(15,45,100,0.55);
+      --blue-glow: rgba(37,99,168,0.3);
+      --gray-dark: #1e2d40;
+      --gray-mid: #5d7a9a;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', 'Noto Sans JP', sans-serif;
+      color: var(--gray-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0; transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right {
+      opacity: 0; transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible, .reveal-right.visible {
+      opacity: 1; transform: translateX(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: #f5efe8;
+      border-bottom: 1px solid rgba(192,57,43,0.15);
+      box-shadow: 0 2px 20px rgba(120,60,30,0.12);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: #ede5da;
+      box-shadow: 0 4px 28px rgba(120,60,30,0.18);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img { height: 42px; }
+    .nav-logo-text {
+      font-size: 0.9rem; font-weight: 600; color: #2c1a0e;
+      line-height: 1.3;
+    }
+    .nav-logo-text span { display: block; font-size: 0.72rem; color: #7a5c44; font-weight: 400; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: #3a2210; font-size: 0.88rem;
+      font-weight: 500; position: relative; padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--red); transition: width 0.3s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .lang-switcher { display: flex; gap: 6px; align-items: center; }
+    .lang-btn {
+      padding: 5px 10px; border: 1.5px solid rgba(37,99,168,0.5);
+      background: rgba(37,99,168,0.1);
+      border-radius: 4px; font-size: 0.78rem; cursor: pointer;
+      color: rgba(255,255,255,0.7); transition: all 0.2s; font-weight: 500;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--red); color: #fff; border-color: var(--red);
+    }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--blue-deep) 0%, var(--blue-mid) 60%, #0d2f5a 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 100px 5% 60px;
+      text-align: center;
+    }
+
+    /* CITY ANIMATION */
+    .city-scene {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 75%;
+      overflow: hidden; pointer-events: none;
+    }
+    .city-layer {
+      position: absolute; bottom: 0;
+      display: flex; align-items: flex-end;
+      animation: cityPan linear infinite;
+    }
+    .city-layer-1 { animation-duration: 80s; opacity: 0.18; filter: blur(0px); }
+    .city-layer-2 { animation-duration: 55s; opacity: 0.28; filter: blur(0px); }
+    .city-layer-3 { animation-duration: 35s; opacity: 0.45; filter: blur(0px); }
+
+    @keyframes cityPan {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* SVG Buildings embedded via background */
+    .city-layer svg { flex-shrink: 0; }
+
+    /* Stars / particles */
+    .stars {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 8%,  rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 40% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 5%,  rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 12%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 18%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 92% 7%,  rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 18% 30%, rgba(200,220,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 25%, rgba(200,220,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 35%, rgba(255,255,255,0.3) 0%, transparent 100%);
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      0%   { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    /* Glow horizon */
+    .hero-horizon {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
+      background: linear-gradient(to top,
+        rgba(37,99,168,0.25) 0%,
+        rgba(15,50,110,0.1) 60%,
+        transparent 100%);
+      pointer-events: none;
+    }
+
+    /* floating light orbs */
+    .orb {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      filter: blur(60px); animation: orbFloat 10s ease-in-out infinite alternate;
+    }
+    .orb1 { width: 300px; height: 300px; top: 10%; left: -5%;
+      background: radial-gradient(circle, rgba(37,99,168,0.25) 0%, transparent 70%);
+      animation-duration: 12s; }
+    .orb2 { width: 250px; height: 250px; top: 20%; right: 5%;
+      background: radial-gradient(circle, rgba(15,80,160,0.2) 0%, transparent 70%);
+      animation-duration: 9s; animation-delay: -3s; }
+    .orb3 { width: 200px; height: 200px; top: 50%; left: 40%;
+      background: radial-gradient(circle, rgba(192,57,43,0.12) 0%, transparent 70%);
+      animation-duration: 15s; animation-delay: -6s; }
+    @keyframes orbFloat {
+      0%   { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-40px) scale(1.1); }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-badge {
+      display: inline-block; padding: 6px 22px;
+      background: rgba(37,99,168,0.2);
+      border: 1px solid rgba(37,99,168,0.5);
+      border-radius: 30px; color: rgba(150,200,255,0.9); font-size: 0.82rem;
+      letter-spacing: 2px; margin-bottom: 28px;
+      animation: fadeSlideDown 1s ease 0.2s both;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700; color: #fff;
+      line-height: 1.2; margin-bottom: 22px;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+      animation: fadeSlideDown 1s ease 0.4s both;
+    }
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(180,210,255,0.8); margin-bottom: 42px;
+      max-width: 620px; margin-left: auto; margin-right: auto;
+      animation: fadeSlideDown 1s ease 0.6s both;
+    }
+    .hero-cta {
+      display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      animation: fadeSlideDown 1s ease 0.8s both;
+    }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      padding: 14px 36px; background: var(--red); color: #fff;
+      border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; text-decoration: none; transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(192,57,43,0.4);
+    }
+    .btn-primary:hover { background: var(--dark-red); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(192,57,43,0.5); }
+    .btn-outline {
+      padding: 14px 36px; background: rgba(37,99,168,0.2); color: #fff;
+      border: 1.5px solid rgba(100,160,255,0.4); border-radius: 6px;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: all 0.25s;
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover { border-color: rgba(150,200,255,0.8); background: rgba(37,99,168,0.35); transform: translateY(-3px); }
+
+    .scroll-hint {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(150,200,255,0.5); font-size: 0.7rem; letter-spacing: 2px;
+      animation: fadeSlideDown 1s ease 1.2s both;
+    }
+    .scroll-hint .arrow {
+      width: 18px; height: 18px; border-right: 2px solid rgba(100,160,255,0.4);
+      border-bottom: 2px solid rgba(100,160,255,0.4); transform: rotate(45deg);
+      animation: bounce 1.6s infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(8px)} }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 5%; }
+    .section-label {
+      display: inline-block; color: var(--red); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 700;
+      color: var(--gray-dark); margin-bottom: 16px; line-height: 1.25;
+    }
+    .section-desc {
+      color: var(--gray-mid); font-size: 1rem; max-width: 640px;
+      margin-bottom: 50px; line-height: 1.8;
+    }
+    .divider {
+      width: 50px; height: 3px;
+      background: linear-gradient(90deg, var(--red), rgba(192,57,43,0.3));
+      margin-bottom: 24px; border-radius: 2px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: #f0f5ff; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 70px;
+      align-items: center; max-width: 1100px; margin: 0 auto;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap::before {
+      content: ''; position: absolute; top: 18px; left: 18px;
+      width: 100%; height: 100%;
+      border: 2px solid rgba(37,99,168,0.3); border-radius: 14px; z-index: 0;
+      transition: all 0.4s;
+    }
+    .about-img-wrap:hover::before { top: 12px; left: 12px; border-color: var(--red); }
+    .about-visual {
+      position: relative; z-index: 1;
+      background: linear-gradient(145deg, var(--blue-mid) 0%, var(--blue-light) 100%);
+      border-radius: 14px; padding: 48px 36px;
+      color: #fff; text-align: center;
+      box-shadow: 0 20px 60px rgba(10,22,40,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+      border: 1px solid rgba(37,99,168,0.3);
+    }
+    .about-visual .big-logo { font-size: 4rem; margin-bottom: 16px; filter: drop-shadow(0 0 20px rgba(100,160,255,0.4)); }
+    .about-visual h3 { font-size: 1.35rem; margin-bottom: 8px; }
+    .about-visual p { font-size: 0.88rem; color: rgba(180,210,255,0.7); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .stat-box {
+      background: rgba(255,255,255,0.06); border-radius: 10px; padding: 16px;
+      border: 1px solid rgba(100,160,255,0.15);
+      transition: all 0.3s;
+    }
+    .stat-box:hover { background: rgba(255,255,255,0.1); border-color: rgba(100,160,255,0.3); transform: translateY(-2px); }
+    .stat-num { font-size: 1.8rem; font-weight: 700; color: #7eb8ff; }
+    .stat-lbl { font-size: 0.74rem; color: rgba(180,210,255,0.6); margin-top: 4px; }
+
+    .about-text .features { margin-top: 30px; display: flex; flex-direction: column; gap: 18px; }
+    .feature-item { display: flex; gap: 14px; align-items: flex-start; }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(37,99,168,0.15), rgba(37,99,168,0.05));
+      border: 1px solid rgba(37,99,168,0.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.15rem;
+      transition: all 0.3s;
+    }
+    .feature-item:hover .feature-icon { background: rgba(37,99,168,0.2); transform: scale(1.08); }
+    .feature-item h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; color: var(--gray-dark); }
+    .feature-item p { font-size: 0.84rem; color: var(--gray-mid); }
+
+    /* ── SERVICES ── */
+    #services {
+      background: linear-gradient(180deg, #e8f0ff 0%, #f4f7ff 100%);
+    }
+    .services-wrap { max-width: 1100px; margin: 0 auto; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px;
+    }
+    .service-card {
+      background: #fff; border-radius: 14px; padding: 38px 30px;
+      box-shadow: 0 4px 30px rgba(10,30,80,0.07);
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      border: 1px solid rgba(37,99,168,0.08);
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--red), rgba(192,57,43,0));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(10,30,80,0.14);
+      border-color: rgba(37,99,168,0.15);
+    }
+    .service-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, rgba(37,99,168,0.12), rgba(37,99,168,0.04));
+      border: 1px solid rgba(37,99,168,0.15);
+      border-radius: 14px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.9rem; margin-bottom: 22px;
+      transition: all 0.3s;
+    }
+    .service-card:hover .service-icon { transform: scale(1.1) rotate(-3deg); background: rgba(37,99,168,0.18); }
+    .service-card h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 12px; color: var(--gray-dark); }
+    .service-card p { font-size: 0.87rem; color: var(--gray-mid); line-height: 1.8; }
+    .service-card ul { margin-top: 14px; padding-left: 0; list-style: none; }
+    .service-card ul li {
+      font-size: 0.84rem; color: var(--gray-mid); margin-bottom: 7px;
+      padding-left: 16px; position: relative;
+    }
+    .service-card ul li::before {
+      content: '›'; position: absolute; left: 0; color: var(--blue-bright); font-weight: 700;
+    }
+
+    /* ── WHY US ── */
+    #why {
+      background: linear-gradient(145deg, var(--blue-deep) 0%, var(--blue-mid) 50%, #0d3060 100%);
+      color: #fff; position: relative; overflow: hidden;
+    }
+    #why::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234080c0' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 24px;
+      max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    .why-card {
+      text-align: center; padding: 40px 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(100,160,255,0.12);
+      border-radius: 14px;
+      transition: all 0.35s;
+      backdrop-filter: blur(6px);
+    }
+    .why-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(100,160,255,0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+    .why-num {
+      font-size: 2.8rem; font-weight: 700; margin-bottom: 12px;
+      background: linear-gradient(135deg, #7eb8ff, #aed4ff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1;
+    }
+    .why-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: rgba(255,255,255,0.9); }
+    .why-card p { font-size: 0.83rem; color: rgba(180,210,255,0.6); line-height: 1.8; }
+
+    /* ── CONTACT ── */
+    #contact { background: #f0f5ff; }
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .contact-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 24px; }
+    .info-row {
+      display: flex; gap: 14px; align-items: flex-start; margin-bottom: 22px;
+      transition: transform 0.2s;
+    }
+    .info-row:hover { transform: translateX(4px); }
+    .info-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, rgba(37,99,168,0.15), rgba(37,99,168,0.05));
+      border: 1px solid rgba(37,99,168,0.2);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0; transition: all 0.3s;
+    }
+    .info-row:hover .info-icon { background: rgba(37,99,168,0.2); transform: scale(1.08); }
+    .info-row h5 { font-size: 0.78rem; color: var(--gray-mid); font-weight: 500; margin-bottom: 4px; }
+    .info-row p { font-size: 0.9rem; font-weight: 500; color: var(--gray-dark); }
+    .info-row a { color: var(--gray-dark); text-decoration: none; transition: color 0.2s; }
+    .info-row a:hover { color: var(--blue-bright); }
+
+    .contact-map { display: flex; flex-direction: column; }
+    .contact-map h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 18px; }
+    .map-wrap {
+      flex: 1; min-height: 380px; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 40px rgba(10,30,80,0.15);
+      border: 1px solid rgba(37,99,168,0.15);
+    }
+    .map-wrap iframe { display: block; width: 100%; height: 100%; min-height: 380px; }
+    .map-addr-bar {
+      margin-top: 14px; display: flex; align-items: center; gap: 10px;
+      background: rgba(37,99,168,0.08); border: 1px solid rgba(37,99,168,0.15);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 0.87rem; color: var(--gray-mid); flex-wrap: wrap;
+    }
+    .map-link {
+      margin-left: auto; color: var(--blue-bright); text-decoration: none;
+      font-weight: 600; font-size: 0.84rem; white-space: nowrap; transition: color 0.2s;
+    }
+    .map-link:hover { color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: linear-gradient(180deg, var(--blue-deep) 0%, #060e1e 100%);
+      color: rgba(255,255,255,0.6);
+      padding: 60px 5% 30px;
+      border-top: 1px solid rgba(37,99,168,0.2);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px;
+      max-width: 1100px; margin: 0 auto 50px;
+    }
+    .footer-brand p { font-size: 0.85rem; margin-top: 14px; line-height: 1.9; }
+    .footer-col h4 { color: rgba(180,210,255,0.9); font-size: 0.9rem; font-weight: 600; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      text-decoration: none; color: rgba(255,255,255,0.5); font-size: 0.84rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: #7eb8ff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(37,99,168,0.2); padding-top: 26px;
+      text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .footer-logo-text {
+      font-size: 1.05rem; font-weight: 700; color: rgba(180,210,255,0.9);
+    }
+    .footer-logo-sub {
+      display: block; font-size: 0.72rem; color: rgba(255,255,255,0.4); font-weight: 400; margin-top: 2px;
+    }
+
+    /* ── MOBILE ── */
+    .mobile-menu {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: rgba(8,20,45,0.97); backdrop-filter: blur(16px);
+      padding: 20px 5%; box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      z-index: 999; flex-direction: column; gap: 14px;
+      border-bottom: 1px solid rgba(37,99,168,0.2);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 10px 0; border-bottom: 1px solid rgba(37,99,168,0.15); }
+    .mobile-menu .lang-switcher { padding-top: 8px; }
+
+    @media (max-width: 900px) {
+      .nav-links, .lang-switcher { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">
+    <img src="logo.png" alt="HsuSheng Logo" onerror="this.style.display='none'" />
+    <div class="nav-logo-text">
+      <span data-i18n="nav_company_en">HsuSheng International</span>
+      <span data-i18n="nav_company_zh">旭勝國際有限公司</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav_about">關於我們</a></li>
+    <li><a href="#services" data-i18n="nav_services">服務項目</a></li>
+    <li><a href="#why" data-i18n="nav_why">為何選擇我們</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">聯絡我們</a></li>
+  </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()" data-i18n="nav_about">關於我們</a>
+  <a href="#services" onclick="closeMenu()" data-i18n="nav_services">服務項目</a>
+  <a href="#why" onclick="closeMenu()" data-i18n="nav_why">為何選擇我們</a>
+  <a href="#contact" onclick="closeMenu()" data-i18n="nav_contact">聯絡我們</a>
+  <div class="lang-switcher" style="padding-top:8px">
+    <button class="lang-btn active" onclick="setLang('zh');closeMenu()">中文</button>
+    <button class="lang-btn" onclick="setLang('en');closeMenu()">EN</button>
+    <button class="lang-btn" onclick="setLang('ja');closeMenu()">日本語</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="stars"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <!-- City buildings animation -->
+  <div class="city-scene">
+    <!-- Layer 1: far background buildings (slow, dark) -->
+    <div class="city-layer city-layer-1">
+      <svg width="2400" height="320" viewBox="0 0 2400 320" xmlns="http://www.w3.org/2000/svg" fill="rgba(20,50,120,0.6)">
+        <rect x="0"   y="120" width="60"  height="200"/>
+        <rect x="70"  y="80"  width="80"  height="240"/>
+        <rect x="160" y="140" width="50"  height="180"/>
+        <rect x="220" y="60"  width="70"  height="260"/>
+        <rect x="300" y="100" width="55"  height="220"/>
+        <rect x="365" y="40"  width="90"  height="280"/>
+        <rect x="465" y="110" width="60"  height="210"/>
+        <rect x="535" y="70"  width="75"  height="250"/>
+        <rect x="620" y="130" width="45"  height="190"/>
+        <rect x="675" y="50"  width="85"  height="270"/>
+        <rect x="770" y="90"  width="65"  height="230"/>
+        <rect x="845" y="30"  width="95"  height="290"/>
+        <rect x="950" y="100" width="55"  height="220"/>
+        <rect x="1015" y="60" width="80"  height="260"/>
+        <rect x="1105" y="130" width="50" height="190"/>
+        <rect x="1165" y="45"  width="90" height="275"/>
+        <rect x="1265" y="110" width="60" height="210"/>
+        <rect x="1335" y="70"  width="75" height="250"/>
+        <rect x="1420" y="90"  width="65" height="230"/>
+        <rect x="1495" y="30"  width="100" height="290"/>
+        <rect x="1605" y="120" width="55" height="200"/>
+        <rect x="1670" y="55"  width="85" height="265"/>
+        <rect x="1765" y="140" width="50" height="180"/>
+        <rect x="1825" y="65"  width="75" height="255"/>
+        <rect x="1910" y="95"  width="60" height="225"/>
+        <rect x="1980" y="35"  width="95" height="285"/>
+        <rect x="2085" y="110" width="60" height="210"/>
+        <rect x="2155" y="70"  width="80" height="250"/>
+        <rect x="2245" y="130" width="50" height="190"/>
+        <rect x="2305" y="50"  width="90" height="270"/>
+        <!-- Windows -->
+        <g fill="rgba(180,220,255,0.15)">
+          <rect x="75"  y="100" width="8" height="8"/><rect x="90"  y="100" width="8" height="8"/>
+          <rect x="75"  y="115" width="8" height="8"/><rect x="90"  y="115" width="8" height="8"/>
+          <rect x="225" y="80"  width="8" height="8"/><rect x="240" y="80"  width="8" height="8"/>
+          <rect x="225" y="95"  width="8" height="8"/><rect x="240" y="95"  width="8" height="8"/>
+          <rect x="370" y="60"  width="8" height="8"/><rect x="385" y="60"  width="8" height="8"/>
+          <rect x="400" y="60"  width="8" height="8"/><rect x="370" y="75"  width="8" height="8"/>
+          <rect x="385" y="75"  width="8" height="8"/><rect x="400" y="75"  width="8" height="8"/>
+        </g>
+      </svg>
+      <!-- duplicate for seamless loop -->
+      <svg width="2400" height="320" viewBox="0 0 2400 320" xmlns="http://www.w3.org/2000/svg" fill="rgba(20,50,120,0.6)">
+        <rect x="0"   y="120" width="60"  height="200"/>
+        <rect x="70"  y="80"  width="80"  height="240"/>
+        <rect x="160" y="140" width="50"  height="180"/>
+        <rect x="220" y="60"  width="70"  height="260"/>
+        <rect x="300" y="100" width="55"  height="220"/>
+        <rect x="365" y="40"  width="90"  height="280"/>
+        <rect x="465" y="110" width="60"  height="210"/>
+        <rect x="535" y="70"  width="75"  height="250"/>
+        <rect x="620" y="130" width="45"  height="190"/>
+        <rect x="675" y="50"  width="85"  height="270"/>
+        <rect x="770" y="90"  width="65"  height="230"/>
+        <rect x="845" y="30"  width="95"  height="290"/>
+        <rect x="950" y="100" width="55"  height="220"/>
+        <rect x="1015" y="60" width="80"  height="260"/>
+        <rect x="1105" y="130" width="50" height="190"/>
+        <rect x="1165" y="45"  width="90" height="275"/>
+        <rect x="1265" y="110" width="60" height="210"/>
+        <rect x="1335" y="70"  width="75" height="250"/>
+        <rect x="1420" y="90"  width="65" height="230"/>
+        <rect x="1495" y="30"  width="100" height="290"/>
+        <rect x="1605" y="120" width="55" height="200"/>
+        <rect x="1670" y="55"  width="85" height="265"/>
+        <rect x="1765" y="140" width="50" height="180"/>
+        <rect x="1825" y="65"  width="75" height="255"/>
+        <rect x="1910" y="95"  width="60" height="225"/>
+        <rect x="1980" y="35"  width="95" height="285"/>
+        <rect x="2085" y="110" width="60" height="210"/>
+        <rect x="2155" y="70"  width="80" height="250"/>
+        <rect x="2245" y="130" width="50" height="190"/>
+        <rect x="2305" y="50"  width="90" height="270"/>
+      </svg>
+    </div>
+
+    <!-- Layer 2: mid buildings -->
+    <div class="city-layer city-layer-2">
+      <svg width="2400" height="400" viewBox="0 0 2400 400" xmlns="http://www.w3.org/2000/svg">
+        <g fill="rgba(12,35,85,0.75)">
+          <rect x="0"    y="160" width="70"  height="240"/>
+          <rect x="80"   y="100" width="55"  height="300"/>
+          <rect x="145"  y="60"  width="100" height="340"/>
+          <rect x="255"  y="130" width="65"  height="270"/>
+          <rect x="330"  y="50"  width="80"  height="350"/>
+          <rect x="420"  y="110" width="60"  height="290"/>
+          <rect x="490"  y="30"  width="110" height="370"/>
+          <rect x="610"  y="140" width="70"  height="260"/>
+          <rect x="690"  y="70"  width="90"  height="330"/>
+          <rect x="790"  y="100" width="60"  height="300"/>
+          <rect x="860"  y="40"  width="120" height="360"/>
+          <rect x="990"  y="120" width="75"  height="280"/>
+          <rect x="1075" y="55"  width="95"  height="345"/>
+          <rect x="1180" y="150" width="65"  height="250"/>
+          <rect x="1255" y="35"  width="110" height="365"/>
+          <rect x="1375" y="90"  width="80"  height="310"/>
+          <rect x="1465" y="60"  width="100" height="340"/>
+          <rect x="1575" y="130" width="70"  height="270"/>
+          <rect x="1655" y="45"  width="115" height="355"/>
+          <rect x="1780" y="110" width="60"  height="290"/>
+          <rect x="1850" y="70"  width="90"  height="330"/>
+          <rect x="1950" y="30"  width="120" height="370"/>
+          <rect x="2080" y="140" width="65"  height="260"/>
+          <rect x="2155" y="55"  width="95"  height="345"/>
+          <rect x="2260" y="100" width="75"  height="300"/>
+          <rect x="2345" y="40"  width="55"  height="360"/>
+        </g>
+        <!-- Lit windows -->
+        <g fill="rgba(180,220,255,0.25)">
+          <rect x="148" y="80"  width="10" height="8"/><rect x="164" y="80"  width="10" height="8"/>
+          <rect x="180" y="80"  width="10" height="8"/><rect x="148" y="96"  width="10" height="8"/>
+          <rect x="164" y="96"  width="10" height="8"/><rect x="180" y="96"  width="10" height="8"/>
+          <rect x="148" y="112" width="10" height="8"/><rect x="164" y="112" width="10" height="8"/>
+          <rect x="333" y="70"  width="10" height="8"/><rect x="349" y="70"  width="10" height="8"/>
+          <rect x="365" y="70"  width="10" height="8"/><rect x="333" y="86"  width="10" height="8"/>
+          <rect x="349" y="86"  width="10" height="8"/>
+          <rect x="493" y="50"  width="10" height="8"/><rect x="509" y="50"  width="10" height="8"/>
+          <rect x="525" y="50"  width="10" height="8"/><rect x="541" y="50"  width="10" height="8"/>
+          <rect x="493" y="66"  width="10" height="8"/><rect x="509" y="66"  width="10" height="8"/>
+          <rect x="525" y="66"  width="10" height="8"/><rect x="541" y="66"  width="10" height="8"/>
+          <rect x="493" y="82"  width="10" height="8"/><rect x="525" y="82"  width="10" height="8"/>
+          <rect x="863" y="60"  width="10" height="8"/><rect x="879" y="60"  width="10" height="8"/>
+          <rect x="895" y="60"  width="10" height="8"/><rect x="863" y="76"  width="10" height="8"/>
+          <rect x="879" y="76"  width="10" height="8"/><rect x="895" y="76"  width="10" height="8"/>
+          <rect x="863" y="92"  width="10" height="8"/><rect x="895" y="92"  width="10" height="8"/>
+        </g>
+        <!-- Antenna lights -->
+        <g fill="rgba(255,100,100,0.8)">
+          <circle cx="195" cy="55" r="3"><animate attributeName="opacity" values="1;0.2;1" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle cx="545" cy="25" r="3"><animate attributeName="opacity" values="1;0.2;1" dur="2.2s" repeatCount="indefinite"/></circle>
+          <circle cx="918" cy="35" r="3"><animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite"/></circle>
+          <circle cx="1308" cy="28" r="3"><animate attributeName="opacity" values="1;0.2;1" dur="2.0s" repeatCount="indefinite"/></circle>
+          <circle cx="1708" cy="38" r="3"><animate attributeName="opacity" values="1;0.2;1" dur="1.7s" repeatCount="indefinite"/></circle>
+          <circle cx="2003" cy="22" r="3"><animate attributeName="opacity" values="1;0.2;1" dur="2.4s" repeatCount="indefinite"/></circle>
+        </g>
+      </svg>
+      <svg width="2400" height="400" viewBox="0 0 2400 400" xmlns="http://www.w3.org/2000/svg">
+        <g fill="rgba(12,35,85,0.75)">
+          <rect x="0"    y="160" width="70"  height="240"/>
+          <rect x="80"   y="100" width="55"  height="300"/>
+          <rect x="145"  y="60"  width="100" height="340"/>
+          <rect x="255"  y="130" width="65"  height="270"/>
+          <rect x="330"  y="50"  width="80"  height="350"/>
+          <rect x="420"  y="110" width="60"  height="290"/>
+          <rect x="490"  y="30"  width="110" height="370"/>
+          <rect x="610"  y="140" width="70"  height="260"/>
+          <rect x="690"  y="70"  width="90"  height="330"/>
+          <rect x="790"  y="100" width="60"  height="300"/>
+          <rect x="860"  y="40"  width="120" height="360"/>
+          <rect x="990"  y="120" width="75"  height="280"/>
+          <rect x="1075" y="55"  width="95"  height="345"/>
+          <rect x="1180" y="150" width="65"  height="250"/>
+          <rect x="1255" y="35"  width="110" height="365"/>
+          <rect x="1375" y="90"  width="80"  height="310"/>
+          <rect x="1465" y="60"  width="100" height="340"/>
+          <rect x="1575" y="130" width="70"  height="270"/>
+          <rect x="1655" y="45"  width="115" height="355"/>
+          <rect x="1780" y="110" width="60"  height="290"/>
+          <rect x="1850" y="70"  width="90"  height="330"/>
+          <rect x="1950" y="30"  width="120" height="370"/>
+          <rect x="2080" y="140" width="65"  height="260"/>
+          <rect x="2155" y="55"  width="95"  height="345"/>
+          <rect x="2260" y="100" width="75"  height="300"/>
+          <rect x="2345" y="40"  width="55"  height="360"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Layer 3: foreground buildings (fast, darkest) -->
+    <div class="city-layer city-layer-3">
+      <svg width="2400" height="500" viewBox="0 0 2400 500" xmlns="http://www.w3.org/2000/svg">
+        <g fill="rgba(5,15,45,0.9)">
+          <rect x="0"    y="200" width="90"  height="300"/>
+          <rect x="100"  y="120" width="70"  height="380"/>
+          <rect x="180"  y="50"  width="130" height="450"/>
+          <rect x="320"  y="160" width="80"  height="340"/>
+          <rect x="410"  y="80"  width="110" height="420"/>
+          <rect x="530"  y="30"  width="150" height="470"/>
+          <rect x="690"  y="170" width="85"  height="330"/>
+          <rect x="785"  y="90"  width="120" height="410"/>
+          <rect x="915"  y="40"  width="140" height="460"/>
+          <rect x="1065" y="180" width="90"  height="320"/>
+          <rect x="1165" y="70"  width="110" height="430"/>
+          <rect x="1285" y="20"  width="160" height="480"/>
+          <rect x="1455" y="150" width="85"  height="350"/>
+          <rect x="1550" y="60"  width="130" height="440"/>
+          <rect x="1690" y="190" width="75"  height="310"/>
+          <rect x="1775" y="30"  width="155" height="470"/>
+          <rect x="1940" y="120" width="95"  height="380"/>
+          <rect x="2045" y="55"  width="125" height="445"/>
+          <rect x="2180" y="170" width="80"  height="330"/>
+          <rect x="2270" y="35"  width="130" height="465"/>
+        </g>
+        <!-- Foreground windows — more prominent -->
+        <g fill="rgba(160,210,255,0.35)">
+          <rect x="185" y="75"  width="12" height="10"/><rect x="203" y="75"  width="12" height="10"/>
+          <rect x="221" y="75"  width="12" height="10"/><rect x="239" y="75"  width="12" height="10"/>
+          <rect x="185" y="93"  width="12" height="10"/><rect x="203" y="93"  width="12" height="10"/>
+          <rect x="221" y="93"  width="12" height="10"/>
+          <rect x="185" y="111" width="12" height="10"/><rect x="239" y="111" width="12" height="10"/>
+          <rect x="534" y="55"  width="12" height="10"/><rect x="552" y="55"  width="12" height="10"/>
+          <rect x="570" y="55"  width="12" height="10"/><rect x="588" y="55"  width="12" height="10"/>
+          <rect x="606" y="55"  width="12" height="10"/><rect x="624" y="55"  width="12" height="10"/>
+          <rect x="534" y="73"  width="12" height="10"/><rect x="552" y="73"  width="12" height="10"/>
+          <rect x="570" y="73"  width="12" height="10"/><rect x="588" y="73"  width="12" height="10"/>
+          <rect x="606" y="73"  width="12" height="10"/>
+          <rect x="534" y="91"  width="12" height="10"/><rect x="570" y="91"  width="12" height="10"/>
+          <rect x="624" y="91"  width="12" height="10"/>
+          <rect x="920" y="65"  width="12" height="10"/><rect x="938" y="65"  width="12" height="10"/>
+          <rect x="956" y="65"  width="12" height="10"/><rect x="974" y="65"  width="12" height="10"/>
+          <rect x="992" y="65"  width="12" height="10"/><rect x="1010" y="65" width="12" height="10"/>
+          <rect x="920" y="83"  width="12" height="10"/><rect x="956" y="83"  width="12" height="10"/>
+          <rect x="974" y="83"  width="12" height="10"/><rect x="1010" y="83" width="12" height="10"/>
+          <rect x="1290" y="45" width="12" height="10"/><rect x="1308" y="45" width="12" height="10"/>
+          <rect x="1326" y="45" width="12" height="10"/><rect x="1344" y="45" width="12" height="10"/>
+          <rect x="1362" y="45" width="12" height="10"/><rect x="1380" y="45" width="12" height="10"/>
+          <rect x="1290" y="63" width="12" height="10"/><rect x="1308" y="63" width="12" height="10"/>
+          <rect x="1326" y="63" width="12" height="10"/><rect x="1380" y="63" width="12" height="10"/>
+          <rect x="1290" y="81" width="12" height="10"/><rect x="1344" y="81" width="12" height="10"/>
+        </g>
+        <!-- Rooftop lights -->
+        <g fill="rgba(255,80,80,0.9)">
+          <circle cx="255" cy="43" r="4"><animate attributeName="opacity" values="1;0.1;1" dur="1.6s" repeatCount="indefinite"/></circle>
+          <circle cx="605" cy="23" r="4"><animate attributeName="opacity" values="1;0.1;1" dur="2.1s" repeatCount="indefinite"/></circle>
+          <circle cx="985" cy="33" r="4"><animate attributeName="opacity" values="1;0.1;1" dur="1.4s" repeatCount="indefinite"/></circle>
+          <circle cx="1365" cy="13" r="4"><animate attributeName="opacity" values="1;0.1;1" dur="1.9s" repeatCount="indefinite"/></circle>
+          <circle cx="1852" cy="23" r="4"><animate attributeName="opacity" values="1;0.1;1" dur="2.3s" repeatCount="indefinite"/></circle>
+          <circle cx="2275" cy="28" r="4"><animate attributeName="opacity" values="1;0.1;1" dur="1.7s" repeatCount="indefinite"/></circle>
+        </g>
+        <!-- Ground glow -->
+        <rect x="0" y="490" width="2400" height="10" fill="rgba(37,99,168,0.3)"/>
+      </svg>
+      <svg width="2400" height="500" viewBox="0 0 2400 500" xmlns="http://www.w3.org/2000/svg">
+        <g fill="rgba(5,15,45,0.9)">
+          <rect x="0"    y="200" width="90"  height="300"/>
+          <rect x="100"  y="120" width="70"  height="380"/>
+          <rect x="180"  y="50"  width="130" height="450"/>
+          <rect x="320"  y="160" width="80"  height="340"/>
+          <rect x="410"  y="80"  width="110" height="420"/>
+          <rect x="530"  y="30"  width="150" height="470"/>
+          <rect x="690"  y="170" width="85"  height="330"/>
+          <rect x="785"  y="90"  width="120" height="410"/>
+          <rect x="915"  y="40"  width="140" height="460"/>
+          <rect x="1065" y="180" width="90"  height="320"/>
+          <rect x="1165" y="70"  width="110" height="430"/>
+          <rect x="1285" y="20"  width="160" height="480"/>
+          <rect x="1455" y="150" width="85"  height="350"/>
+          <rect x="1550" y="60"  width="130" height="440"/>
+          <rect x="1690" y="190" width="75"  height="310"/>
+          <rect x="1775" y="30"  width="155" height="470"/>
+          <rect x="1940" y="120" width="95"  height="380"/>
+          <rect x="2045" y="55"  width="125" height="445"/>
+          <rect x="2180" y="170" width="80"  height="330"/>
+          <rect x="2270" y="35"  width="130" height="465"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-horizon"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge" data-i18n="hero_badge">醫藥行銷專業夥伴</div>
+    <h1 class="hero-title">
+      <span data-i18n="hero_title">旭勝國際</span><br>
+      <span class="highlight" data-i18n="hero_title2">專業醫藥行銷服務</span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero_sub">深耕健保藥品・醫療器材・醫療行銷領域，為您的醫療事業提供全方位專業解決方案</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary" data-i18n="hero_cta1">了解服務項目</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero_cta2">立即聯繫</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span data-i18n="scroll">SCROLL</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal-left">
+      <div class="about-visual">
+        <div class="big-logo">⚕</div>
+        <h3 data-i18n="about_visual_title">旭勝國際有限公司</h3>
+        <p data-i18n="about_visual_sub">HsuSheng International Co., Ltd.</p>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num" data-i18n="stat1_num">20+</div>
+            <div class="stat-lbl" data-i18n="stat1_lbl">年專業經驗</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num" data-i18n="stat2_num">100+</div>
+            <div class="stat-lbl" data-i18n="stat2_lbl">合作廠商</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num" data-i18n="stat3_num">500+</div>
+            <div class="stat-lbl" data-i18n="stat3_lbl">服務客戶</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num" data-i18n="stat4_num">全台</div>
+            <div class="stat-lbl" data-i18n="stat4_lbl">服務網絡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-label" data-i18n="about_label">關於我們</div>
+      <h2 class="section-title" data-i18n="about_title">專注醫藥行銷<br>創造醫療價值</h2>
+      <div class="divider"></div>
+      <p data-i18n="about_desc1">旭勝國際有限公司成立以來，致力於提供最專業的醫藥行銷服務，以健保藥品推廣、醫療器材代理及醫療通路開發為核心業務，深耕台灣醫療市場。</p>
+      <br>
+      <p data-i18n="about_desc2">我們擁有豐富的醫療產業資源，與各大醫療機構、診所及藥局建立長期穩定的合作關係，協助國內外醫療廠商進入台灣市場，提供從市場分析到通路推廣的一站式服務。</p>
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">🏥</div>
+          <div>
+            <h4 data-i18n="feat1_title">健保藥品行銷</h4>
+            <p data-i18n="feat1_desc">專業的健保藥品推廣與市場開發，協助建立醫療通路</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔬</div>
+          <div>
+            <h4 data-i18n="feat2_title">醫療器材代理</h4>
+            <p data-i18n="feat2_desc">嚴選優質醫療器材，提供完整的產品代理與銷售服務</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📊</div>
+          <div>
+            <h4 data-i18n="feat3_title">市場通路開發</h4>
+            <p data-i18n="feat3_desc">整合全台醫療院所資源，快速建立產品銷售網絡</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy" style="background: linear-gradient(160deg, var(--blue-mid) 0%, #0d3060 100%); color:#fff; position:relative; overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234080c0' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/svg%3E\");pointer-events:none;"></div>
+  <div style="max-width:1000px; margin:0 auto; position:relative; z-index:1;">
+    <div class="reveal" style="text-align:center; margin-bottom:48px;">
+      <div class="section-label" style="color:rgba(150,200,255,0.85);" data-i18n="phil_label">我們的理念</div>
+      <h2 class="section-title" style="color:#fff;" data-i18n="phil_title">以醫療價值為核心，以患者利益為依歸</h2>
+      <div class="divider" style="margin:16px auto 0;"></div>
+    </div>
+    <div class="reveal" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(100,160,255,0.18); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+          <div style="font-size:1.8rem; margin-bottom:12px;">🎯</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v1_title">嚴選優質產品</h4>
+          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v1_desc">我們深信，唯有真正優質的產品才能創造醫療價值。在引進每一項藥品或醫療器材之前，旭勝國際均進行嚴格的品質評估與臨床效益審核，確保所代理的產品具備充分的科學實證，能切實提升醫療品質。</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(100,160,255,0.18); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+          <div style="font-size:1.8rem; margin-bottom:12px;">💡</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v2_title">符合經濟效益</h4>
+          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v2_desc">在醫療資源有限的現實環境下，我們積極尋找療效卓越且具備成本效益的解決方案，協助醫療端在合理的預算範圍內，為患者提供最高水準的醫療照護，讓每一分醫療資源都能發揮最大效益。</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(100,160,255,0.18); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+          <div style="font-size:1.8rem; margin-bottom:12px;">🤝</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(180,220,255,0.95);" data-i18n="phil_v3_title">以醫療端為夥伴</h4>
+          <p style="font-size:0.87rem; color:rgba(180,210,255,0.65); line-height:1.9;" data-i18n="phil_v3_desc">旭勝國際不只是一家行銷公司，更是醫療端最信賴的長期夥伴。我們主動了解醫師、護理師與藥師的實際需求，提供完整的產品知識支援與使用培訓，讓醫療專業人員能夠以最充分的信心使用我們所引進的產品。</p>
+        </div>
+        <div style="background:rgba(192,57,43,0.15); border:1px solid rgba(192,57,43,0.3); border-radius:14px; padding:28px; transition:all 0.3s;" onmouseover="this.style.background='rgba(192,57,43,0.22)'" onmouseout="this.style.background='rgba(192,57,43,0.15)'">
+          <div style="font-size:1.8rem; margin-bottom:12px;">❤️</div>
+          <h4 style="font-size:1rem; font-weight:700; margin-bottom:8px; color:#f1948a;" data-i18n="phil_v4_title">以患者福祉為優先</h4>
+          <p style="font-size:0.87rem; color:rgba(255,200,195,0.7); line-height:1.9;" data-i18n="phil_v4_desc">一切努力的最終目的，是讓每一位患者都能獲得更有效、更安全、更經濟的醫療選擇。旭勝國際始終以患者的健康福祉作為最高指導原則，用專業與熱忱，為台灣的醫療環境帶來持續進步與正向改變。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-wrap">
+    <div style="text-align:center; margin-bottom:50px;" class="reveal">
+      <div class="section-label" data-i18n="serv_label">服務項目</div>
+      <h2 class="section-title" data-i18n="serv_title">全方位醫藥行銷解決方案</h2>
+      <div class="divider" style="margin:0 auto 20px;"></div>
+      <p class="section-desc" style="margin:0 auto;" data-i18n="serv_desc">整合健保藥品、醫療器材及醫療行銷資源，為客戶提供專業、全面的服務體驗</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal delay-1">
+        <div class="service-icon">💊</div>
+        <h3 data-i18n="s1_title">健保藥品行銷</h3>
+        <p data-i18n="s1_desc">提供健保藥品的市場分析、推廣策略及通路建立，協助廠商有效進入健保市場。</p>
+        <ul>
+          <li data-i18n="s1_li1">健保品項申請與協助</li>
+          <li data-i18n="s1_li2">醫院、診所拜訪推廣</li>
+          <li data-i18n="s1_li3">藥品市場分析報告</li>
+          <li data-i18n="s1_li4">通路開發與維護</li>
+        </ul>
+      </div>
+      <div class="service-card reveal delay-2">
+        <div class="service-icon">🩺</div>
+        <h3 data-i18n="s2_title">醫療器材代理</h3>
+        <p data-i18n="s2_desc">代理國內外優質醫療器材品牌，提供完整的產品導入、銷售與售後服務。</p>
+        <ul>
+          <li data-i18n="s2_li1">醫療器材進口代理</li>
+          <li data-i18n="s2_li2">產品教育訓練</li>
+          <li data-i18n="s2_li3">醫院標案協助</li>
+          <li data-i18n="s2_li4">器材維護與技術支援</li>
+        </ul>
+      </div>
+      <div class="service-card reveal delay-3">
+        <div class="service-icon">📊</div>
+        <h3 data-i18n="s3_title">市場進入策略</h3>
+        <p data-i18n="s3_desc">協助國內外醫療廠商制定台灣市場進入策略，提供完整的市場調查與商業規劃。</p>
+        <ul>
+          <li data-i18n="s3_li1">市場調查與分析</li>
+          <li data-i18n="s3_li2">競品分析報告</li>
+          <li data-i18n="s3_li3">商業計畫書制定</li>
+          <li data-i18n="s3_li4">合作夥伴媒合</li>
+        </ul>
+      </div>
+      <div class="service-card reveal delay-4">
+        <div class="service-icon">🤝</div>
+        <h3 data-i18n="s5_title">醫療通路開發</h3>
+        <p data-i18n="s5_desc">整合全台醫療院所、連鎖藥局及通路資源，快速建立產品銷售網絡。</p>
+        <ul>
+          <li data-i18n="s5_li1">醫學中心合作洽談</li>
+          <li data-i18n="s5_li2">地區醫院通路建立</li>
+          <li data-i18n="s5_li3">診所及藥局網絡</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div style="text-align:center; margin-bottom:50px; max-width:1100px; margin:0 auto 50px;" class="reveal">
+    <div class="section-label" style="color:rgba(150,200,255,0.8);" data-i18n="why_label">為何選擇我們</div>
+    <h2 class="section-title" style="color:#fff;" data-i18n="why_title">旭勝國際的核心優勢</h2>
+    <div class="divider" style="margin:16px auto 0;"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal delay-1">
+      <div class="why-num" data-i18n="why1_num">20+</div>
+      <h4 data-i18n="why1_title">年豐富經驗</h4>
+      <p data-i18n="why1_desc">深耕台灣醫藥行銷市場超過二十年，累積豐富的產業知識與人脈網絡</p>
+    </div>
+    <div class="why-card reveal delay-2">
+      <div class="why-num" data-i18n="why2_num">專業</div>
+      <h4 data-i18n="why2_title">專業團隊</h4>
+      <p data-i18n="why2_desc">擁有醫藥、行銷專業背景的優秀團隊，提供最高品質的服務</p>
+    </div>
+    <div class="why-card reveal delay-3">
+      <div class="why-num" data-i18n="why3_num">全台</div>
+      <h4 data-i18n="why3_title">服務網絡</h4>
+      <p data-i18n="why3_desc">遍及全台的醫療院所合作網絡，快速有效建立產品銷售管道</p>
+    </div>
+    <div class="why-card reveal delay-4">
+      <div class="why-num" data-i18n="why4_num">一站式</div>
+      <h4 data-i18n="why4_title">整合服務</h4>
+      <p data-i18n="why4_desc">從市場分析到通路推廣，提供完整的一站式醫藥行銷整合服務</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info reveal-left">
+      <div class="section-label" data-i18n="contact_label">聯絡我們</div>
+      <h2 class="section-title" data-i18n="contact_title">歡迎與我們聯繫</h2>
+      <div class="divider"></div>
+      <p style="color:var(--gray-mid); margin-bottom:32px; font-size:0.95rem;" data-i18n="contact_desc">無論您有任何醫藥行銷需求，歡迎隨時與我們聯繫，我們將盡快為您提供專業建議。</p>
+      <div class="info-row">
+        <div class="info-icon">👤</div>
+        <div>
+          <h5 data-i18n="info_person_lbl">負責人</h5>
+          <p data-i18n="info_person">謝聯旭 Benjamin Hsieh｜Director</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <h5 data-i18n="info_addr_lbl">公司地址</h5>
+          <p data-i18n="info_addr">高雄市鼓山區明華路253號14樓<br>14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📱</div>
+        <div>
+          <h5 data-i18n="info_mobile_lbl">行動電話</h5>
+          <p><a href="tel:+886932344193">886-932-344-193</a></p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📧</div>
+        <div>
+          <h5 data-i18n="info_email_lbl">電子郵件</h5>
+          <p><a href="mailto:benjaminhsieh168@gmail.com">benjaminhsieh168@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💬</div>
+        <div>
+          <h5>Line ID</h5>
+          <p>0932344193</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏢</div>
+        <div>
+          <h5 data-i18n="info_taxid_lbl">統一編號</h5>
+          <p>60692333</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-map reveal-right">
+      <h3 data-i18n="map_title">公司位置</h3>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.0!2d120.2947!3d22.6637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e04c85a7f3a4f%3A0x0!2z6auY5Y2X5ZyL5Y2X5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw&q=高雄市鼓山區明華路253號"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="旭勝國際有限公司位置"></iframe>
+      </div>
+      <div class="map-addr-bar">
+        <span>📍</span>
+        <span data-i18n="info_addr_short">高雄市鼓山區明華路253號14樓</span>
+        <a href="https://maps.google.com/?q=高雄市鼓山區明華路253號" target="_blank" rel="noopener" class="map-link" data-i18n="map_open">在 Google Maps 開啟</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <div class="footer-logo-text" data-i18n="footer_company">旭勝國際有限公司</div>
+      <span class="footer-logo-sub" data-i18n="footer_company_en">HsuSheng International Co., Ltd.</span>
+      <p data-i18n="footer_desc">專注醫藥行銷領域，提供健保藥品、醫療器材及市場開發等全方位服務，是您進入台灣醫療市場最可靠的專業夥伴。</p>
+    </div>
+    <div class="footer-col reveal delay-1">
+      <h4 data-i18n="footer_quick">快速連結</h4>
+      <ul>
+        <li><a href="#about" data-i18n="nav_about">關於我們</a></li>
+        <li><a href="#services" data-i18n="nav_services">服務項目</a></li>
+        <li><a href="#why" data-i18n="nav_why">為何選擇我們</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">聯絡我們</a></li>
+      </ul>
+    </div>
+    <div class="footer-col reveal delay-2">
+      <h4 data-i18n="footer_contact_title">聯絡資訊</h4>
+      <ul>
+        <li><a href="tel:+886932344193">📱 886-932-344-193</a></li>
+        <li><a href="mailto:benjaminhsieh168@gmail.com">📧 benjaminhsieh168@gmail.com</a></li>
+        <li><span style="color:rgba(255,255,255,0.5); font-size:0.84rem;">💬 Line: 0932344193</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="footer_copy">© 2025 旭勝國際有限公司 HsuSheng International Co., Ltd. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  zh: {
+    nav_company_en:'HsuSheng International', nav_company_zh:'旭勝國際有限公司',
+    nav_about:'關於我們', nav_services:'服務項目', nav_why:'為何選擇我們', nav_contact:'聯絡我們',
+    hero_badge:'醫藥行銷專業夥伴', hero_title:'旭勝國際', hero_title2:'專業醫藥行銷服務',
+    hero_sub:'深耕健保藥品・醫療器材・醫療行銷領域，為您的醫療事業提供全方位專業解決方案',
+    hero_cta1:'了解服務項目', hero_cta2:'立即聯繫', scroll:'SCROLL',
+    about_label:'關於我們', about_title:'專注醫藥行銷<br>創造醫療價值',
+    about_visual_title:'旭勝國際有限公司', about_visual_sub:'HsuSheng International Co., Ltd.',
+    stat1_num:'20+', stat1_lbl:'年專業經驗', stat2_num:'100+', stat2_lbl:'合作廠商',
+    stat3_num:'500+', stat3_lbl:'服務客戶', stat4_num:'全台', stat4_lbl:'服務網絡',
+    about_desc1:'旭勝國際有限公司成立以來，致力於提供最專業的醫藥行銷服務，以健保藥品推廣、醫療器材代理及醫療通路開發為核心業務，深耕台灣醫療市場。',
+    about_desc2:'我們擁有豐富的醫療產業資源，與各大醫療機構、診所及藥局建立長期穩定的合作關係，協助國內外醫療廠商進入台灣市場，提供從市場分析到通路推廣的一站式服務。',
+    feat1_title:'健保藥品行銷', feat1_desc:'專業的健保藥品推廣與市場開發，協助建立醫療通路',
+    feat2_title:'醫療器材代理', feat2_desc:'嚴選優質醫療器材，提供完整的產品代理與銷售服務',
+    feat3_title:'市場通路開發', feat3_desc:'整合全台醫療院所資源，快速建立產品銷售網絡',
+    serv_label:'服務項目', serv_title:'全方位醫藥行銷解決方案',
+    serv_desc:'整合健保藥品、醫療器材及醫療行銷資源，為客戶提供專業、全面的服務體驗',
+    s1_title:'健保藥品行銷', s1_desc:'提供健保藥品的市場分析、推廣策略及通路建立，協助廠商有效進入健保市場。',
+    s1_li1:'健保品項申請與協助', s1_li2:'醫院、診所拜訪推廣', s1_li3:'藥品市場分析報告', s1_li4:'通路開發與維護',
+    s2_title:'醫療器材代理', s2_desc:'代理國內外優質醫療器材品牌，提供完整的產品導入、銷售與售後服務。',
+    s2_li1:'醫療器材進口代理', s2_li2:'產品教育訓練', s2_li3:'醫院標案協助', s2_li4:'器材維護與技術支援',
+    s3_title:'市場進入策略', s3_desc:'協助國內外醫療廠商制定台灣市場進入策略，提供完整的市場調查與商業規劃。',
+    s3_li1:'市場調查與分析', s3_li2:'競品分析報告', s3_li3:'商業計畫書制定', s3_li4:'合作夥伴媒合',
+    s5_title:'醫療通路開發', s5_desc:'整合全台醫療院所、連鎖藥局及通路資源，快速建立產品銷售網絡。',
+    s5_li1:'醫學中心合作洽談', s5_li2:'地區醫院通路建立', s5_li3:'診所及藥局網絡', s5_li4:'電商及線上通路',
+    why_label:'為何選擇我們', why_title:'旭勝國際的核心優勢',
+    why1_num:'20+', why1_title:'年豐富經驗', why1_desc:'深耕台灣醫藥行銷市場超過二十年，累積豐富的產業知識與人脈網絡',
+    why2_num:'專業', why2_title:'專業團隊', why2_desc:'擁有醫藥、行銷專業背景的優秀團隊，提供最高品質的服務',
+    why3_num:'全台', why3_title:'服務網絡', why3_desc:'遍及全台的醫療院所合作網絡，快速有效建立產品銷售管道',
+    why4_num:'一站式', why4_title:'整合服務', why4_desc:'從市場分析到通路推廣，提供完整的一站式醫藥行銷整合服務',
+    contact_label:'聯絡我們', contact_title:'歡迎與我們聯繫',
+    contact_desc:'無論您有任何醫藥行銷需求，歡迎隨時與我們聯繫，我們將盡快為您提供專業建議。',
+    info_person_lbl:'負責人', info_person:'謝聯旭 Benjamin Hsieh｜Director',
+    info_addr_lbl:'公司地址', info_addr:'高雄市鼓山區明華路253號14樓<br>14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
+    info_addr_short:'高雄市鼓山區明華路253號14樓',
+    info_mobile_lbl:'行動電話', info_email_lbl:'電子郵件', info_taxid_lbl:'統一編號',
+    phil_label:'我們的理念', phil_title:'以醫療價值為核心，以患者利益為依歸',
+    phil_v1_title:'嚴選優質產品', phil_v1_desc:'我們深信，唯有真正優質的產品才能創造醫療價值。在引進每一項藥品或醫療器材之前，旭勝國際均進行嚴格的品質評估與臨床效益審核，確保所代理的產品具備充分的科學實證，能切實提升醫療品質。',
+    phil_v2_title:'符合經濟效益', phil_v2_desc:'在醫療資源有限的現實環境下，我們積極尋找療效卓越且具備成本效益的解決方案，協助醫療端在合理的預算範圍內，為患者提供最高水準的醫療照護，讓每一分醫療資源都能發揮最大效益。',
+    phil_v3_title:'以醫療端為夥伴', phil_v3_desc:'旭勝國際不只是一家行銷公司，更是醫療端最信賴的長期夥伴。我們主動了解醫師、護理師與藥師的實際需求，提供完整的產品知識支援與使用培訓，讓醫療專業人員能夠以最充分的信心使用我們所引進的產品。',
+    phil_v4_title:'以患者福祉為優先', phil_v4_desc:'一切努力的最終目的，是讓每一位患者都能獲得更有效、更安全、更經濟的醫療選擇。旭勝國際始終以患者的健康福祉作為最高指導原則，用專業與熱忱，為台灣的醫療環境帶來持續進步與正向改變。',
+    map_title:'公司位置', map_open:'在 Google Maps 開啟',
+    footer_company:'旭勝國際有限公司', footer_company_en:'HsuSheng International Co., Ltd.',
+    footer_desc:'專注醫藥行銷領域，提供健保藥品、醫療器材及市場開發等全方位服務，是您進入台灣醫療市場最可靠的專業夥伴。',
+    footer_quick:'快速連結', footer_contact_title:'聯絡資訊',
+    footer_copy:'© 2025 旭勝國際有限公司 HsuSheng International Co., Ltd. All Rights Reserved.',
+  },
+  en: {
+    nav_company_en:'HsuSheng International', nav_company_zh:'HsuSheng International Co., Ltd.',
+    nav_about:'About Us', nav_services:'Services', nav_why:'Why Choose Us', nav_contact:'Contact Us',
+    hero_badge:'Professional Pharmaceutical Marketing Partner', hero_title:'HsuSheng International',
+    hero_title2:'Professional Pharma Marketing',
+    hero_sub:'Specializing in NHI drugs, medical devices & healthcare marketing — your complete solution for the Taiwan medical market.',
+    hero_cta1:'Our Services', hero_cta2:'Contact Us', scroll:'SCROLL',
+    about_label:'About Us', about_title:'Focused on Pharma Marketing<br>Creating Healthcare Value',
+    about_visual_title:'HsuSheng International Co., Ltd.', about_visual_sub:'旭勝國際有限公司',
+    stat1_num:'20+', stat1_lbl:'Years Experience', stat2_num:'100+', stat2_lbl:'Partners',
+    stat3_num:'500+', stat3_lbl:'Clients', stat4_num:'NW', stat4_lbl:'Nationwide',
+    about_desc1:'Since its founding, HsuSheng International has been committed to the most professional pharmaceutical marketing services, with NHI drug promotion, medical device distribution, and healthcare channel development as core businesses.',
+    about_desc2:'We have extensive medical industry resources and long-term cooperative relationships with major medical institutions, clinics and pharmacies, helping manufacturers enter the Taiwan market with one-stop services from market analysis to channel promotion.',
+    feat1_title:'NHI Drug Marketing', feat1_desc:'Professional NHI drug promotion and market development to build healthcare channels',
+    feat2_title:'Medical Device Distribution', feat2_desc:'Selected quality medical devices with comprehensive agency and sales services',
+    feat3_title:'Market & Channel Development', feat3_desc:'Integrating nationwide medical resources to quickly build product sales networks',
+    serv_label:'Services', serv_title:'Comprehensive Pharma Marketing Solutions',
+    serv_desc:'Integrating NHI drugs, medical devices and healthcare marketing resources to provide professional and comprehensive service experiences',
+    s1_title:'NHI Drug Marketing', s1_desc:'Market analysis, promotional strategies and channel building for NHI drugs to help manufacturers effectively enter the health insurance market.',
+    s1_li1:'NHI listing application', s1_li2:'Hospital & clinic promotion visits', s1_li3:'Drug market analysis reports', s1_li4:'Channel development & maintenance',
+    s2_title:'Medical Device Distribution', s2_desc:'Representing quality medical device brands with complete product introduction, sales and after-sales services.',
+    s2_li1:'Medical device import agency', s2_li2:'Product education & training', s2_li3:'Hospital tender assistance', s2_li4:'Device maintenance & technical support',
+    s3_title:'Market Entry Strategy', s3_desc:'Helping manufacturers formulate Taiwan market entry strategies with comprehensive market research and business planning.',
+    s3_li1:'Market research & analysis', s3_li2:'Competitive analysis reports', s3_li3:'Business plan development', s3_li4:'Partner matchmaking',
+    s5_title:'Healthcare Channel Development', s5_desc:'Integrating nationwide medical institutions, chain pharmacies and channel resources to quickly build product sales networks.',
+    s5_li1:'Medical center cooperation', s5_li2:'Regional hospital channels', s5_li3:'Clinic & pharmacy networks', s5_li4:'E-commerce & online channels',
+    why_label:'Why Choose Us', why_title:"HsuSheng's Core Advantages",
+    why1_num:'20+', why1_title:'Years of Experience', why1_desc:'Over 20 years deep in Taiwan pharma marketing, with rich industry knowledge and extensive networks',
+    why2_num:'Pro', why2_title:'Expert Team', why2_desc:'A superb team with pharmaceutical and marketing expertise delivering the highest quality service',
+    why3_num:'NW', why3_title:'Nationwide Network', why3_desc:'A nationwide medical institution network enabling fast and effective product sales channel establishment',
+    why4_num:'1-Stop', why4_title:'Integrated Services', why4_desc:'From market analysis to channel promotion, a complete one-stop pharma marketing integration service',
+    contact_label:'Contact Us', contact_title:'Get in Touch With Us',
+    contact_desc:'Whatever your pharmaceutical marketing needs, feel free to contact us anytime and we will provide professional advice as soon as possible.',
+    info_person_lbl:'Contact Person', info_person:'Benjamin Hsieh｜Director',
+    info_addr_lbl:'Address', info_addr:'14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
+    info_addr_short:'14F., No.253, Minghua Rd., Kaohsiung',
+    info_mobile_lbl:'Mobile', info_email_lbl:'Email', info_taxid_lbl:'Tax ID',
+    map_title:'Our Location', map_open:'Open in Google Maps',
+    footer_company:'HsuSheng International Co., Ltd.', footer_company_en:'旭勝國際有限公司',
+    footer_desc:'Focused on pharmaceutical marketing, providing NHI drugs, medical devices and market development — your most reliable professional partner for entering the Taiwan medical market.',
+    footer_quick:'Quick Links', footer_contact_title:'Contact Info',
+    footer_copy:'© 2025 HsuSheng International Co., Ltd. All Rights Reserved.',
+  },
+  ja: {
+    nav_company_en:'HsuSheng International', nav_company_zh:'旭勝国際有限公司',
+    nav_about:'会社概要', nav_services:'サービス内容', nav_why:'選ばれる理由', nav_contact:'お問い合わせ',
+    hero_badge:'医薬品マーケティング専門パートナー', hero_title:'旭勝国際',
+    hero_title2:'プロの医薬マーケティング',
+    hero_sub:'健康保険薬品・医療機器・医療マーケティング分野に特化し、台湾医療市場への総合的な専門ソリューションを提供します。',
+    hero_cta1:'サービスを見る', hero_cta2:'お問い合わせ', scroll:'SCROLL',
+    about_label:'会社概要', about_title:'医薬マーケティングに特化<br>医療価値の創造',
+    about_visual_title:'旭勝国際有限公司', about_visual_sub:'HsuSheng International Co., Ltd.',
+    stat1_num:'20+', stat1_lbl:'年の専門経験', stat2_num:'100+', stat2_lbl:'協力メーカー',
+    stat3_num:'500+', stat3_lbl:'取引顧客', stat4_num:'全国', stat4_lbl:'サービスネットワーク',
+    about_desc1:'旭勝国際有限公司は設立以来、最も専門的な医薬マーケティングサービスの提供に注力してきました。健康保険薬品の推進、医療機器の代理店業務、医療チャネル開発をコアビジネスとして台湾医療市場に深く根ざしています。',
+    about_desc2:'豊富な医療産業リソースを持ち、主要な医療機関、クリニック、薬局と長期的かつ安定した協力関係を構築しています。市場分析からチャネル推進までのワンストップサービスを提供しています。',
+    feat1_title:'健保薬品マーケティング', feat1_desc:'専門的な健保薬品の推進と市場開発で医療チャネルを構築',
+    feat2_title:'医療機器代理店', feat2_desc:'厳選された医療機器の完全な代理店・販売サービスを提供',
+    feat3_title:'市場・チャネル開発', feat3_desc:'全国の医療機関リソースを統合し製品販売ネットワークを構築',
+    serv_label:'サービス内容', serv_title:'総合的な医薬マーケティングソリューション',
+    serv_desc:'健保薬品・医療機器・医療マーケティングリソースを統合し、専門的かつ包括的なサービスを提供',
+    s1_title:'健保薬品マーケティング', s1_desc:'健保薬品の市場分析、プロモーション戦略、チャネル構築を提供し、メーカーの健保市場参入を支援します。',
+    s1_li1:'健保品目申請・支援', s1_li2:'病院・クリニック訪問推進', s1_li3:'医薬品市場分析レポート', s1_li4:'チャネル開発・維持',
+    s2_title:'医療機器代理店', s2_desc:'国内外の優質医療機器ブランドを代理し、完全な製品導入・販売・アフターサービスを提供します。',
+    s2_li1:'医療機器輸入代理', s2_li2:'製品教育・トレーニング', s2_li3:'病院入札支援', s2_li4:'機器メンテナンス・技術サポート',
+    s3_title:'市場参入戦略', s3_desc:'国内外の医療メーカーの台湾市場参入戦略策定を支援し、包括的な市場調査と事業計画を提供します。',
+    s3_li1:'市場調査・分析', s3_li2:'競合分析レポート', s3_li3:'事業計画策定', s3_li4:'パートナーマッチング',
+    s5_title:'医療チャネル開発', s5_desc:'全国の医療機関・チェーン薬局・チャネルリソースを統合し、製品販売ネットワークを迅速に構築します。',
+    s5_li1:'医療センター協力交渉', s5_li2:'地域病院チャネル構築', s5_li3:'クリニック・薬局ネットワーク', s5_li4:'EC・オンラインチャネル',
+    why_label:'選ばれる理由', why_title:'旭勝国際のコアアドバンテージ',
+    why1_num:'20+', why1_title:'年の豊富な経験', why1_desc:'台湾医薬マーケティング市場で20年以上深く経験を積み、豊富な業界知識と人脈ネットワークを蓄積',
+    why2_num:'専門', why2_title:'専門チーム', why2_desc:'医薬・マーケティング専門バックグラウンドを持つ優れたチームが最高品質のサービスを提供',
+    why3_num:'全国', why3_title:'サービスネットワーク', why3_desc:'全国の医療機関協力ネットワークで製品販売チャネルを迅速かつ効果的に構築',
+    why4_num:'一本化', why4_title:'統合サービス', why4_desc:'市場分析からチャネル推進まで、完全なワンストップ医薬マーケティング統合サービスを提供',
+    contact_label:'お問い合わせ', contact_title:'お気軽にご連絡ください',
+    contact_desc:'どのような医薬マーケティングのご需要もお気軽にお問い合わせください。できるだけ早く専門的なアドバイスをご提供いたします。',
+    info_person_lbl:'担当者', info_person:'謝聯旭 Benjamin Hsieh｜Director',
+    info_addr_lbl:'会社住所', info_addr:'14F., No.253, Minghua Rd., Gushan Dist.,<br>Kaohsiung City 804605, Taiwan',
+    info_addr_short:'14F., No.253, Minghua Rd., Kaohsiung',
+    info_mobile_lbl:'携帯電話', info_email_lbl:'メール', info_taxid_lbl:'統一番号',
+    map_title:'会社の所在地', map_open:'Google マップで開く',
+    footer_company:'旭勝国際有限公司', footer_company_en:'HsuSheng International Co., Ltd.',
+    footer_desc:'医薬マーケティング分野に特化し、健保薬品・医療機器・市場開発などの総合サービスを提供する台湾医療市場参入の最も信頼できるパートナーです。',
+    footer_quick:'クイックリンク', footer_contact_title:'連絡先情報',
+    footer_copy:'© 2025 旭勝国際有限公司 HsuSheng International Co., Ltd. All Rights Reserved.',
+  }
+};
+
+let currentLang = 'zh';
+
+function setLang(lang) {
+  currentLang = lang;
+  const d = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (d[k] !== undefined) el.innerHTML = d[k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const k = el.getAttribute('data-i18n-placeholder');
+    if (d[k] !== undefined) el.placeholder = d[k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active',
+      btn.textContent.trim() === (lang==='zh'?'中文':lang==='en'?'EN':'日本語'));
+  });
+  document.documentElement.lang = lang==='zh'?'zh-TW':lang==='ja'?'ja':'en';
+}
+
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu()  { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+setLang('zh');
+</script>
+</body>
+</html>
